@@ -1,0 +1,25 @@
+.comment-container{
+    background-color: rgb(243, 243, 241);
+    padding: 10px;
+    text-align: left;
+    /* margin-bottom: 20px; */
+    min-width: 400px;
+    border-bottom: 6px solid white;
+}
+
+.comment-author{
+    border-bottom: 1px solid lightgrey;
+}
+
+.fa-user-circle{
+    margin-right: 8px;
+}
+
+.comment-text{
+    margin-top: 6px;
+}
+
+.comment-date{
+    margin: 0;
+    font-size: 0.6em;
+}

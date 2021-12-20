@@ -1,0 +1,10 @@
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.page-wrapper-inner {
+  margin-top: 2rem;
+  min-height: 75vh;
+}

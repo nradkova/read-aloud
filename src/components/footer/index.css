@@ -1,0 +1,33 @@
+.footer-wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 5rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8em;
+}
+
+.footer-wrapper p{
+    margin-top: 0.5%;
+}
+
+.logo-container-footer{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    width: 20%;
+    justify-content: center;
+}
+
+.logo-footer{
+    margin-right: 5%;
+}
+
+.logo-img-footer{
+    max-height: 30px;
+}
+
+.text-footer{
+    font-weight: bold;
+}
+

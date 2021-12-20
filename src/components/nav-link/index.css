@@ -1,0 +1,22 @@
+.header-list-item{
+    margin-right: 5%;
+}
+
+.header-link{
+    display: contents;
+    padding: 2%;
+    font-size: 1.2em;
+    text-decoration: none;
+    color: black;
+}
+
+.footer-link{
+    padding: 2%;
+    margin-right: 5rem;
+    font-size: 1.6em;
+    text-decoration: none;
+}
+
+/* .header-link[href*="my-page"]{
+    color: blue;
+} */

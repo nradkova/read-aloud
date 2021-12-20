@@ -1,0 +1,61 @@
+.page-title-logout {
+  text-align: center;
+  color: #234465;
+  /* text-decoration: underline; */
+  margin-bottom: 2%;
+}
+
+.page-title-logout:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 106px;
+  width: 100vw;
+  height: 80vh;
+  opacity: 0.35;
+  background-image: url("../../../components/images/abstract-geb4afad64_1280.png");
+  background-repeat: no-repeat;
+  background-size: 100vw 80vh;
+  z-index: -10;
+}
+
+.signout-section {
+  position: absolute;
+  top: 43%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 250px;
+  display: flex;
+  color: white;
+  box-shadow: 3px 10px 20px 0px rgba(0, 0, 0, 0.5);
+  background: rgba(48, 46, 46, 0.8);
+  padding: 30px 0;
+  border-right: 3px solid rgba(30, 30, 30, 0.8);
+}
+
+.signout-section-text h2,
+.signout-section-text h3 {
+  padding-top: 30px;
+  font-weight: 300;
+}
+
+.signout-section-text {
+  width: 60%;
+}
+
+.logout-btn {
+  border: 1px solid rgba(20, 20, 20, 0.6);
+  background: rgba(20, 20, 20, 0.6);
+  font-size: 18px;
+  color: white;
+  margin-top: 20px;
+  padding: 10px 50px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: rgba(20, 20, 20, 0.8);
+  padding: 10px 80px;
+}
