@@ -77,7 +77,7 @@ const Home = () => {
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nulla sequi ipsam modi quas doloribus a impedit quibusdam id numquam officia commodi voluptate maxime nihil assumenda temporibus, voluptatem accusantium minus?
       </section>
       <section className="inner-container-img">
-        <img src="reading-time.jpg" alt="Reading Time" />
+        <img src="/read-aloud/reading-time.jpg" alt="Reading Time" />
       </section>
     </div>
   )

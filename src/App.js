@@ -22,6 +22,7 @@ import EventDetails from './pages/event/event-details';
 
 
 const App = () => {
+
   return (
     <Routes>
       <Route path="/" element={<Landing />} />

@@ -13,7 +13,7 @@ ReactDOM.render(
     <ErrorBoundary>
       <AuthContextProvider>
         <NotificationContextProvider>
-        <BrowserRouter>
+        <BrowserRouter basename="/read-aloud">
           <App />
         </BrowserRouter>
         </NotificationContextProvider>

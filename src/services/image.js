@@ -10,7 +10,7 @@ const uploadImage = async (data) => {
     const res = await fetch(apiUrl, { method: "POST", body: file });
 
     const result = await res.json();
-    return result.url;
+    return result.secure_url;
 }
 
 export default uploadImage;

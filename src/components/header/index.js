@@ -23,7 +23,7 @@ const Header = () => {
     <header className="header-wrapper">
       <div className="logo-container-header">
         <span className="logo-header">
-          <LogoLink href="/home" className="logo-link">{<img alt="logo" className="logo-img-header" src="/logo.png" />}</LogoLink>
+          <LogoLink href="/home" className="logo-link">{<img alt="logo" className="logo-img-header" src="/read-aloud/logo.png" />}</LogoLink>
         </span>
         <div className="text-header">
           <span className="read-aloud">&gt;&gt;&gt; read aloud &lt;&lt;&lt;</span>
