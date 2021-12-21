@@ -2,6 +2,7 @@ import {useContext } from "react";
 import { Link, useParams} from "react-router-dom";
 
 import './index.css';
+import { DEFAULT_BOOK_URL } from "../../../common";
 
 import useBook from "../../../hooks/useBook";
 import AuthContext from "../../../context/authContext";
@@ -67,7 +68,7 @@ const BookDetails = () => {
 						: null
 					}
 					<div className="book-image">
-						<img src={book.imageUrl ? book.imageUrl : "/default_book.png"} alt="Book_cover" />
+						<img src={book.imageUrl ? book.imageUrl : DEFAULT_BOOK_URL} alt="Book_cover" />
 					</div>
 					<p className="book-description">{book.description}</p>
 					<div className="book-categories">
@@ -107,9 +108,3 @@ const BookDetails = () => {
 }
 
 export default BookDetails;
-
-	// const onClickDeleteBookHandler = async(e)=>{
-	// 	e.preventDefault();
-	// 	await deleteBook(bookId)
-	// 	navigate('/books')
-	// }

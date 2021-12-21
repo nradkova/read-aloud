@@ -1,21 +1,25 @@
-import { useRef } from 'react';
+import { useCallback, useRef } from 'react';
 
 import './index.css';
 
+
 const onClickHandler = (e) => {
-  window.scrollTo(0, 0)
+  window.scrollTo({top: 0, behavior: "smooth"});
 }
 
 const scrollToTop = () => {
   if (window.scrollY > 0) {
-    window.scrollTo(0, 0);
+    window.scrollTo({top: 0, behavior: "smooth"});
   }
 }
 
 const Scroller = () => {
   const scroller = useRef()
   
-  scrollToTop();
+  useCallback(()=>{
+    scrollToTop();
+
+  },[])
   
   const setVisible = () => {
     if (window.innerHeight + 300 >= window.outerHeight) {

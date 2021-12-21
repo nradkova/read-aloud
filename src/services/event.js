@@ -15,10 +15,9 @@ const createEvent = async (data) => {
 		const response = await event.save();
 
 		const subscription = await createEventSubscription(response);
-		// const subscription = await createEventSubscription(event.id);
 		response.set('subscription', subscription);
-		const result = await response.save();
 
+		const result = await response.save();
 		return result;
 	} catch (error) {
 		console.error('Error while creating event: ', error);
@@ -37,7 +36,6 @@ const editEvent = async (eventId, data) => {
 		event.set('creator', Parse.User.current());
 		event.set('location', new Parse.GeoPoint({latitude: data.location[0], longitude: data.location[1]}));
 		event.set('imageUrl', data.image);
-		// event.set('status', data.status);
 		try {
 			const result = await event.save();
 			return result;
@@ -89,8 +87,6 @@ const getAllEvents = async function (pagination) {
 	const event = Parse.Object.extend('Event');
 
 	const query = new Parse.Query(event);
-	// query.include('creator');
-	// query.include('subscription');
 	query.descending('createdAt');
 	query.skip((pagination.counter - 1) * pagination.perPage).limit(pagination.perPage);
 
@@ -107,6 +103,7 @@ const getAllEventsCount = async function () {
 	const event = Parse.Object.extend('Event');
 
 	const query = new Parse.Query(event);
+
 	try {
 		return await query.count();
 	} catch (error) {
@@ -118,8 +115,6 @@ const getActiveEvents = async function (pagination) {
 	const event = Parse.Object.extend('Event');
 
 	const query = new Parse.Query(event);
-	// query.include('creator');
-	// query.include('subscription');
 	query.equalTo('status','active');
 	query.greaterThan('date',new Date());
 	query.ascending('date');
@@ -138,8 +133,6 @@ const getActiveEventsCount = async function () {
 	const event = Parse.Object.extend('Event');
 
 	const query = new Parse.Query(event);
-	// query.include('creator');
-	// query.include('subscription');
 	query.equalTo('status','active');
 	query.greaterThan('date',new Date());
 	query.ascending('date');
@@ -154,8 +147,6 @@ const getCancelledEvents = async function (pagination) {
 	const event = Parse.Object.extend('Event');
 
 	const query = new Parse.Query(event);
-	// query.include('creator');
-	// query.include('subscription');
 	query.equalTo('status','cancelled');
 	query.greaterThan('date',new Date());
 	query.ascending('date');
@@ -174,8 +165,6 @@ const getCancelledEventsCount = async function () {
 	const event = Parse.Object.extend('Event');
 
 	const query = new Parse.Query(event);
-	// query.include('creator');
-	// query.include('subscription');
 	query.equalTo('status','cancelled');
 	query.greaterThan('date',new Date());
 	query.ascending('date');
@@ -189,11 +178,11 @@ const getCancelledEventsCount = async function () {
 const getMyEvents = async function (username, pagination) {
 	const innerQuery = new Parse.Query('User');
 	innerQuery.equalTo('username', username.toLocaleLowerCase());
+
 	const event = Parse.Object.extend('Event');
 
 	const query = new Parse.Query(event);
 	query.include('creator');
-	// query.include('subscription');
 	query.descending('createdAt');
 	query.matchesQuery('creator', innerQuery);
 	query.skip((pagination.counter - 1) * pagination.perPage).limit(pagination.perPage);
@@ -214,7 +203,6 @@ const getMyEventsCount = async function (username) {
 
 	const query = new Parse.Query(event);
 	query.include('creator');
-	// query.include('subscription');
 	query.descending('createdAt');
 	query.matchesQuery('creator', innerQuery);
 
@@ -230,7 +218,6 @@ const getLastFourEvents = async function () {
 
 	const query = new Parse.Query(event);
 	query.include('creator');
-	// query.include('subscription');
 	query.descending('createdAt').limit(4);
 
 	try {
@@ -246,7 +233,6 @@ const getMostRecentEvents = async function () {
 	const event = Parse.Object.extend('Event');
 	const query = new Parse.Query(event);
 	query.include('creator');
-	// query.include('subscription');
 	query.equalTo('status','active');
 	query.greaterThan('date',new Date());
 	query.descending('date');
@@ -278,7 +264,6 @@ const viewModel = (record) => {
 		hour:(dateRespone.getHours()),
 		minute:dateRespone.getMinutes()
 	}
-	console.log(dateObj);
 	
 	return {
 		id: record.id,

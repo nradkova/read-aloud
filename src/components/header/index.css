@@ -30,9 +30,6 @@
 .read-aloud {
   font-family: "Lobster", cursive;
   font-size: 1.5rem;
-  /* font-family: monospace;
-    font-size: 1.5rem;
-    font-weight: bolder; */
   margin-bottom: 3%;
 }
 
@@ -41,4 +38,21 @@
   align-items: center;
   justify-content: flex-end;
   width: 50%;
+}
+
+@media screen and (max-width: 700px) {
+  .header-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+ 
+  .logo-container-header,
+  .links-container{
+    justify-content: center;
+    width: 80%;
+    margin-bottom: 3%;
+  }
+
 }

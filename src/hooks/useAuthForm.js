@@ -79,7 +79,6 @@ function useAuthForm() {
             return;
         }
 
-
         userService.login(user)
             .then(user => {
                 setIsloading(true);

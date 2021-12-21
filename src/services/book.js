@@ -270,7 +270,6 @@ const getMostLikedBooks = async function () {
 
 	try {
 		const data = await query.find();
-		console.log(data);
 		const results = data.map(viewModel);
 		return results;
 	} catch (error) {

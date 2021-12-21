@@ -90,8 +90,6 @@ const Home = () => {
       </PageLayout>
     )
   }
-  
-  console.log('render');
 
   return (
     <PageLayout>

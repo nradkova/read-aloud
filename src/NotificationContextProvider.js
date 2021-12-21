@@ -5,7 +5,6 @@ import { INITIAL_NOTIFICATION_VALUE } from './common';
 import NotificationContext from './context/notificationContext';
 
 
-
 const NotificationContextProvider = ({children}) => {
 
     const [notification, setNotification] = useState(INITIAL_NOTIFICATION_VALUE);

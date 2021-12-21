@@ -40,7 +40,6 @@ const register = async (authData) => {
 const logout = async () => {
 	try {
 		await Parse.User.logOut();
-		// await Parse.User.current();
 	} catch (error) {
 		console.error('Error!', error);
 	}

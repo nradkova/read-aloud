@@ -1,5 +1,4 @@
 import './index.css';
-
 import { DEFAULT_BOOK_CATEGORIES } from '../../common';
 
 const Category = ({ selectedCategories }) => {

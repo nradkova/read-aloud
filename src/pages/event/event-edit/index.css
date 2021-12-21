@@ -1,6 +1,5 @@
 .event-form-container {
   background: rgb(236, 237, 227);
-  /* background: rgb(243, 243, 241); */
   width: 100vw;
   padding-bottom: 0.2%;
   margin-bottom: 2%;
@@ -30,7 +29,6 @@
 .event-form-body-details {
   box-sizing: border-box;
   padding: 15px;
-  /* flex: 1 0 45%; */
   width: 43%;
   display: flex;
   flex-direction: column;
@@ -50,7 +48,7 @@
   align-items: center;
 }
 
-.event-date.edit{
+.event-date.edit {
   margin-bottom: 1%;
 }
 
@@ -58,11 +56,10 @@
 .event-date-input,
 .event-image-input,
 .event-description-input {
-  /* border: none; */
   padding: 10px 15px;
   border-radius: 6px;
   width: 70%;
-  border:1px solid lightgrey;
+  border: 1px solid lightgrey;
 }
 
 .event-default-image {
@@ -80,7 +77,7 @@
   margin-bottom: 25px;
 }
 
-.event-date-input-box{
+.event-date-input-box {
   width: 15%;
   height: 20px;
 }
@@ -88,7 +85,7 @@
 label {
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
-  color:#6b989b ;
+  color: #6b989b;
   border: none;
   cursor: pointer;
   display: block;
@@ -143,7 +140,7 @@ label {
 }
 
 .event-edit-form-footer .recommend h3 {
-  margin:0px 0px 30px 0px;
+  margin: 0px 0px 30px 0px;
   font-size: 20px;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
@@ -168,7 +165,7 @@ label {
   color: #6b989b;
 }
 
-.cancel-event-link{
+.cancel-event-link {
   text-decoration: none;
   color: rgb(135, 165, 167);
   font-weight: bold;
@@ -177,4 +174,21 @@ label {
 .event-actions.cancel {
   width: 33%;
   align-self: center;
+}
+
+@media screen and (max-width: 870px) {
+  .event-form-body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .event-form-body-main,
+  .event-form-body-details {
+    width: 80%;
+  }
+
+  .event-default-image img {
+    width: 100%;
+  }
 }

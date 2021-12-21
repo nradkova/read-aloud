@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
 
 import './index.css';
+import { DEFAULT_EVENT_URL } from '../../common';
 
 const EventCardLite = ({onClickSignoutEvent, eventId, imageUrl, name, date, status}) => {
    
     return (
         <div className="event-card-lite">
             <span className="event-card-lite-img">
-                <img src={imageUrl ? imageUrl :"/default_event.png"} alt="event_cover" />
+                <img src={imageUrl ? imageUrl :DEFAULT_EVENT_URL} alt="event_cover" />
             </span>
             <div className="event-card-lite-content">
                 <div className="event-card-lite-content-text">

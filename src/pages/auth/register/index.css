@@ -46,3 +46,12 @@
 .signup-form h2 {
   font-weight: 300;
 }
+
+@media screen and (max-width: 850px) {
+  .signup-section {
+    top: 51%;
+    left: 50%;
+    width: 550px;
+    height: 375px;
+  }
+}

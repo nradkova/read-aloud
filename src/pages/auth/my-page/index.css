@@ -1,19 +1,19 @@
-.my-page-container{
+.my-page-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 70vh;
+  margin-bottom: 3%;
 }
-
 
 .my-page-navigation:before {
   content: " ";
   display: block;
   position: absolute;
   width: 100%;
-  min-height: 66%;
+  min-height: 80%;
   opacity: 0.1;
-  background-image:  url('../../../components/images/background.jpg');
+  background-image: url("../../../components/images/background.jpg");
   background-size: cover;
   z-index: -10;
   margin-top: 36px;
@@ -21,33 +21,34 @@
   border-bottom: 5px solid darkolivegreen;
 }
 
-.my-page-navigation{
+.my-page-navigation {
   text-align: start;
   margin-bottom: 30px;
 }
 
 .create-book-link,
-.create-event-link{
+.create-event-link {
   text-decoration: none;
   padding: 10px 20px;
   margin-right: 20px;
 }
 
-.fa-plus{
+.fa-plus {
   margin-right: 8px;
 }
 
-.my-page-reading-list-items-container{
+.my-page-reading-list-items-container {
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 
-.my-page-reading-list-items{
+.my-page-reading-list-items {
   display: flex;
 }
 
-.prev, .next {
+.prev,
+.next {
   cursor: pointer;
   width: auto;
   margin-top: -22px;
@@ -61,18 +62,42 @@
   border: 1px solid darkolivegreen;
 }
 
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
   color: white;
 }
 
-.prev:disabled, .next:disabled {
+.prev:disabled,
+.next:disabled {
   color: lightgrey;
   background-color: lightgrey;
   border: none;
   visibility: hidden;
 }
 
-.empty-reading-list{
+.empty-reading-list {
   margin-top: 0px;
+}
+
+@media screen and (max-width: 1200px) {
+  .my-page-navigation:before {
+    top: 26%;
+    left: 0;
+  }
+  .my-page-reading-list-items,
+  .my-page-reading-list-items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .my-page-navigation:before {
+    background-image: none;
+  }
 }

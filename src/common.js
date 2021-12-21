@@ -77,5 +77,4 @@ export const INITIAL_NOTIFICATION_VALUE={
     show:false,
     message:"",
     result:"",
-    // objectId:""
 }

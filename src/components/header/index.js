@@ -1,17 +1,17 @@
 import { useContext, useEffect, useState } from 'react';
 
-import './index.css'
+import './index.css';
 
 import getNavigation from '../../utils/navigation'
 import AuthContext from '../../context/authContext';
 
-import Link from '../nav-link'
+import Link from '../nav-link';
 import LogoLink from '../logo-link';
 
 
 const Header = () => {
   const { user,isAuthenticated } = useContext(AuthContext);
-  const [links, setLinks] = useState([])
+  const [links, setLinks] = useState([]);
 
   useEffect(() => {
     setLinks(getNavigation(isAuthenticated, user))

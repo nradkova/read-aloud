@@ -2,16 +2,15 @@ import { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import './index.css';
+import { DEFAULT_EVENT_URL } from "../../../common";
 
 import useEvent from "../../../hooks/useEvent";
 import AuthContext from "../../../context/authContext";
 
-// import Star from "../../../components/star";
 import Loader from "../../../components/loader";
-// import Rating from "../../../components/rating";
+import MapEvent from "../../../components/map-event";
 import CustomComment from "../../../components/comment";
 import PageLayout from "../../../components/page-layout";
-import MapEvent from "../../../components/map-event";
 
 const EventDetails = () => {
 	const { isAuthenticated, user } = useContext(AuthContext);
@@ -72,7 +71,7 @@ const EventDetails = () => {
 						}
 					</div>
 					<div className="event-image">
-						<img src={event.imageUrl ? event.imageUrl : "/default_event.png"} alt="Event_cover" />
+						<img src={event.imageUrl ? event.imageUrl :DEFAULT_EVENT_URL} alt="Event_cover" />
 					</div>
 					<p className="event-description">{event.description}</p>
 					<div className="event-subscribed">

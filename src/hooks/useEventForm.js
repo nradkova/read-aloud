@@ -7,12 +7,13 @@ import { eventDataValidation } from '../utils/validation';
 import { cancelEvent, createEvent, editEvent, getEventById } from '../services/event';
 
 
-const useEventForm = () => {
+const useEventForm = (user) => {
     const [isLoading, setIsloading] = useState(false);
     const [isImageLoading, setIsImageloading] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [point, setPoint] = useState(DEFAULT_LAG_LTD);
     const [eventValue, setEventValue] = useState(INITIAL_EVENT_VALUE);
+    const[notCreator,setNotCreator]=useState(false);
     const [validationError, setValidationError] = useState(INITIAL_EVENT_VALIDATION_ERROR);
     const [imagePreview, setImagePreview] = useState(DEFAULT_EVENT_URL);
 
@@ -26,33 +27,20 @@ const useEventForm = () => {
         if (validationError.required) {
             setValidationError(prev => ({ ...prev, "required": null }))
         }
-        // if (validationError.name || validationError.description
-        //     || validationError.image || validationError.date 
-        //     || validationError.location ||validationError.required) {
-        //     setValidationError(INITIAL_EVENT_VALIDATION_ERROR);
-        // }
 
         const data = new FormData(e.target);
         const event = dataParser(data);
         event.image = imagePreview;
         event.status = 'active';
         event.location = point;
-        // console.log(data.get('month'));
+
         const dateError = eventDataValidation('date', event.date,data.get('month'));
         setValidationError(prev => ({ ...prev, 'date': dateError }));
-        console.log(dateError);
-
-        console.log(event);
-        console.log(validationError);
-
+       
         if (validationError.name || validationError.description
             || validationError.image || dateError) {
-            // setValidationError(INITIAL_EVENT_VALIDATION_ERROR);
             return;
         }
-
-    //    console.log(JSON.stringify(event.location)===JSON.stringify(DEFAULT_LAG_LTD))
-    //    console.log(JSON.stringify(DEFAULT_LAG_LTD))
 
         if (event.name === '' || event.description === ''
             || JSON.stringify(event.location) === JSON.stringify(DEFAULT_LAG_LTD)) {
@@ -81,7 +69,6 @@ const useEventForm = () => {
         const data = new FormData(e.target);
         const event = dataParser(data);
         event.image = imagePreview;
-        // event.status = 'active';
         event.location = point;
 
         const dateError = eventDataValidation('date', event.date,data.get('month'));
@@ -89,7 +76,6 @@ const useEventForm = () => {
 
         if (validationError.name || validationError.description
             || validationError.image || dateError) {
-            // setValidationError(INITIAL_EVENT_VALIDATION_ERROR);
             return;
         }
 
@@ -171,6 +157,9 @@ const useEventForm = () => {
                 setPoint(res.location)
                 setImagePreview(res.imageUrl);
                 setIsloading(false);
+                if(res.creator!==user.username){
+                    setNotCreator(true);
+                }
             })
             .catch(err => console.log(err))
     }, [])
@@ -193,6 +182,7 @@ const useEventForm = () => {
 
     return {
         eventValue,
+        notCreator,
         isLoading,
         isImageLoading,
         isSuccess,

@@ -1,5 +1,5 @@
+import './index.css';
 import { MAX_DEFAULT_RATING } from '../../common';
-import './index.css'
 
 const Star = ({ rating }) => {
     

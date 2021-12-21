@@ -1,7 +1,7 @@
 import { useContext,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import './index.css'
+import './index.css';
 
 import useAuthForm from "../../../hooks/useAuthForm";
 import AuthContext from "../../../context/authContext";

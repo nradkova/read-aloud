@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { MapContainer, Marker, Popup, TileLayer, useMapEvent } from 'react-leaflet';
 
-import './index.css'
+import './index.css';
 import { DEFAULT_LAG_LTD, DEFAULT_MAP_CENTER, DEFAULT_MAP_CENTER_CITY } from '../../common';
+
 
 const MapComponent = ({ getGeoPoint }) => {
   const [point, setPoint] = useState(DEFAULT_LAG_LTD);
@@ -24,15 +25,9 @@ const MapComponent = ({ getGeoPoint }) => {
   )
 }
 
-const MapEvent = ({ getGeoPoint, center, message }) => {
-  // const [point, setPoint] = useState(DEFAULT_MAP_CENTER);
 
-  // const mapCenter = center === "" ? DEFAULT_MAP_CENTER : center;
-  // if(JSON.stringify(center)!==JSON.stringify(DEFAULT_MAP_CENTER)){
-  //   setPoint(center);
-  // }
-  // console.log(center);
-console.log(center);
+const MapEvent = ({ getGeoPoint, center, message }) => {
+ 
   return (
     <div className="map-event">
       <MapContainer center={center || DEFAULT_MAP_CENTER} zoom={8} scrollWheelZoom={false}>
@@ -46,7 +41,6 @@ console.log(center);
           </Popup>
         </Marker>
         <MapComponent  getGeoPoint={getGeoPoint} />
-        {/* <MapComponent center={center} getGeoPoint={getGeoPoint} /> */}
       </MapContainer>
     </div>
   )

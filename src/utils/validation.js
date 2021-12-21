@@ -61,7 +61,6 @@ const eventDataValidation = (type, value,month) => {
 
     if (type === "date") {
         const now = Date.now();
-        console.log(value);
         if (!value || value.getFullYear()===1899||month==='') {
             return "Date is invalid."
         }

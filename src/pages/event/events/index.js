@@ -8,7 +8,6 @@ import useEventSearch from "../../../hooks/useEventSearch";
 import Title from "../../../components/title";
 import Loader from "../../../components/loader";
 import PageLayout from "../../../components/page-layout";
-// import ValidationError from "../../../components/validation-error";
 import EventCardMedium from "../../../components/medium-event-card";
 
 const Events = () => {

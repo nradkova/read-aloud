@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
 
 import './index.css';
+import { DEFAULT_EVENT_URL } from '../../common';
 
 const EventCardMedium = ({ id, imageUrl, name, date, status,createdAt }) => {
    
     return (
         <div className="event-card-medium">
             <span className="event-card-medium-img">
-                <img src={imageUrl ? imageUrl :"/default_event.png"} alt="event_cover" />
+                <img src={imageUrl ? imageUrl :DEFAULT_EVENT_URL} alt="event_cover" />
             </span>
             <div className="event-card-medium-content">
                 <Link className="details-link" to={`/events/${id}`}>VIEW</Link>

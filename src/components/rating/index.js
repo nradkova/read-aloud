@@ -1,11 +1,10 @@
 import { useState } from 'react';
 
-import './index.css'
+import './index.css';
 
 import { rateBook } from '../../services/rating';
 
 const Rating = ({userId,bookId}) => {
-
     const [isDisabled, setIsDisabled] = useState(false);
 
     const onSubmitRatingHandler = (e) => {

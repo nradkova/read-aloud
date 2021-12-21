@@ -1,7 +1,6 @@
 .page-title-logout {
   text-align: center;
   color: #234465;
-  /* text-decoration: underline; */
   margin-bottom: 2%;
 }
 
@@ -58,4 +57,17 @@
 .logout-btn:hover {
   background: rgba(20, 20, 20, 0.8);
   padding: 10px 80px;
+}
+
+@media screen and (max-width: 850px) {
+  .signout-section {
+    top: 51%;
+    left: 50%;
+    width: 550px;
+    height: 228px;
+  }
+
+  .signout-section-text {
+    width: 70%;
+  }
 }

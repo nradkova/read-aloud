@@ -3,9 +3,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  /* background-color: rgb(162, 186, 187); */
   background-color: rgb(198, 214, 202);
-
   color: rgb(61, 53, 53);
 }
 
@@ -16,7 +14,7 @@
 }
 
 .read-aloud-header {
-  font-family: 'Lobster', cursive;
+  font-family: "Lobster", cursive;
   font-size: 2rem;
   letter-spacing: 4px;
   margin-top: 6%;
@@ -67,7 +65,7 @@
 }
 
 .inner-container-books-events .label {
-  background-color:   rgb(198, 214, 202);
+  background-color: rgb(198, 214, 202);
   color: #fff;
   font-size: 1.2em;
   font-weight: bold;
@@ -90,7 +88,7 @@
 }
 
 .inner-container-books-events .label:hover,
-.inner-container-books-events .label.selected{
+.inner-container-books-events .label.selected {
   box-shadow: 4px 5px 4px 1px rgb(0 0 0 / 50%);
   background-color: rgb(133, 159, 160);
   cursor: pointer;
@@ -102,8 +100,21 @@
 }
 
 .books-container,
-.events-container{
+.events-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+
+@media screen and (max-width: 700px) {
+  .inner-container-books-events {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .label-container {
+    padding-left: 0;
+    align-self: center;
+}
 }

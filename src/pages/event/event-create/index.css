@@ -1,6 +1,5 @@
 .event-form-container {
   background: rgb(236, 237, 227);
-  /* background: rgb(243, 243, 241); */
   width: 100vw;
   padding-bottom: 0.2%;
   margin-bottom: 2%;
@@ -30,7 +29,6 @@
 .event-form-body-details {
   box-sizing: border-box;
   padding: 15px;
-  /* flex: 1 0 45%; */
   width: 43%;
   display: flex;
   flex-direction: column;
@@ -49,7 +47,6 @@
   margin-bottom: 1%;
   width: 80%;
   display: flex;
-  /* flex-direction: column; */
   justify-content: space-around;
   align-items: center;
 }
@@ -62,7 +59,6 @@
 .event-date-input,
 .event-image-input,
 .event-description-input {
-  /* border: none; */
   padding: 10px 15px;
   border-radius: 6px;
   width: 70%;
@@ -170,4 +166,27 @@ label {
 .event-action-btn:hover {
   background: #fff;
   color: #6b989b;
+}
+
+@media screen and (max-width: 870px) {
+  .event-form-body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .event-form-body-main,
+  .event-form-body-details {
+    width: 100%;
+  }
+
+  .event-default-image {
+    width: 80%;
+  }
+
+  .event-default-image img {
+    min-width: 340px;
+    margin: 0px auto;
+  }
+ 
 }

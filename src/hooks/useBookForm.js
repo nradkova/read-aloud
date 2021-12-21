@@ -6,14 +6,15 @@ import uploadImage from '../services/image';
 import { bookDataValidation } from '../utils/validation';
 import { createBook, editBook, getBookById } from '../services/book';
 
-const useBookForm = (categories) => {
+
+const useBookForm = (user,categories) => {
     const [isLoading, setIsloading] = useState(false);
     const [isImageLoading, setIsImageloading] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [bookValue, setBookValue] = useState(INITIAL_BOOK_VALUE);
+    const[notCreator,setNotCreator]=useState(false);
     const [validationError, setValidationError] = useState(INITIAL_BOOK_VALIDATION_ERROR);
     const [imagePreview, setImagePreview] = useState(DEFAULT_BOOK_URL);
-
 
     const onSubmitBookCreateHandler = (e) => {
         e.preventDefault();
@@ -147,6 +148,9 @@ const useBookForm = (categories) => {
             setBookValue(res);
             setImagePreview(res.imageUrl)
             setIsloading(false);
+            if(res.creator!==user.username){
+                setNotCreator(true);
+            }
         })
         .catch(err => console.log(err))
     }, [])
@@ -161,6 +165,7 @@ const useBookForm = (categories) => {
 
     return{
         bookValue,
+        notCreator,
         isLoading,
         isImageLoading,
         isSuccess,
@@ -171,7 +176,7 @@ const useBookForm = (categories) => {
         onChangeInputHandler,
         onSubmitBookCreateHandler,
         setInitialBookEditValue,
-        onSubmitBookEditHandler
+        onSubmitBookEditHandler,
     }
 }
 

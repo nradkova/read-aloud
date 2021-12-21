@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 
 
-import { DEFAULT_LAG_LTD, DEFAULT_MAP_CENTER } from '../common';
 import { getEventById } from '../services/event';
 import { signSubscription } from '../services/subscription';
 import { commentDataValidation } from '../utils/validation';
@@ -35,10 +34,8 @@ const useEvent = (eventId, isAuthenticated, user) => {
 		async function fetchData() {
 			setIsloading(true);
 			const event = await getEventById(eventId);
-			console.log(event);
 			setIsloading(false);
 			setEvent(event);
-			console.log(event);
 			if (isAuthenticated && user.username !== event.creator 
 				&& !event.subscribed.includes(user.username) && event.status==="active") {
 				setCanSubscribe(true);
@@ -58,7 +55,6 @@ const useEvent = (eventId, isAuthenticated, user) => {
 		e.preventDefault();
 		await signSubscription(user.username, event.subscriptionId, event.subscribed);
 		const updatedSuscribed=[...event.subscribed,user.username];
-		console.log(event);
 		setEvent(prev=>({...prev,subscribed:updatedSuscribed}));
 		setCanSubscribe(false);
 	}

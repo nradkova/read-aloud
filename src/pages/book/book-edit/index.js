@@ -17,10 +17,11 @@ const BookEdit = () => {
 	const { user } = useContext(AuthContext);
 	const { bookId } = useParams();
 
-	const categories=[];
-	
+	const categories = [];
+
 	const {
 		bookValue: book,
+		notCreator,
 		isLoading,
 		isImageLoading,
 		isSuccess,
@@ -30,23 +31,24 @@ const BookEdit = () => {
 		onChangeInputHandler,
 		onSubmitBookEditHandler,
 		setInitialBookEditValue,
-	} = useBookForm(categories);
+	} = useBookForm(user,categories);
 
+	
 	useEffect(() => {
 		if (isSuccess) {
 			navigate('/books');
 		}
 	}, [isSuccess, navigate])
-
+	
 	useEffect(() => {
-		setInitialBookEditValue(bookId)
+		setInitialBookEditValue(bookId);
 	}, [bookId])
-
+	
 	useEffect(() => {
-		if(book.creator!=="" && book.creator!==user.username){
-		   return()=> navigate('/home');
+		if(notCreator){
+			navigate('/home');
 		}
-	}, [book])
+	}, [notCreator,navigate])
 	
 	if (isLoading) {
 		return (
@@ -78,7 +80,7 @@ const BookEdit = () => {
 							{isImageLoading ? <Loader /> : <img src={imagePreview} alt="Book_Image" />}
 						</div>
 						<div className="image">
-							<input className="image-input" type="file" accept="image/*" lang="en" name="imageUrl" id="imageUrl"  onChange={onChangeImageHandler} />
+							<input className="image-input" type="file" accept="image/*" lang="en" name="imageUrl" id="imageUrl" onChange={onChangeImageHandler} />
 							<label htmlFor="image"><i className="fas fa-image"></i>Image</label>
 							{validationError.image && <ValidationError message={validationError.image} />}
 						</div>
@@ -91,13 +93,6 @@ const BookEdit = () => {
 						</div>
 						<Category selectedCategories={categories} />
 						<p className="book-form-body-details-remark">*The categories you choose will replace previous.</p>
-						{/* <div className="category">
-							<input className="category-input" type="text" name="category" id="category" onBlur={onCategoryBlurHandler} />
-							<span className="add-category"><i className="fa fa-pen"></i> Add category</span>
-						</div>
-						<div className="categories-list">
-							{categories.map(x => <span key={x} className="category-list-item" onClick={onCategoryClickHandler} ><i className="fas fa-times"></i>{x}</span>)}
-						</div> */}
 					</div>
 					<div className="book-form-footer">
 						<div className="recommend">

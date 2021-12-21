@@ -1,8 +1,10 @@
-import './index.css'
+import './index.css';
 
-import Header from '../header'
-import Footer from '../footer'
-import Scroller from '../scroller'
+import Header from '../header';
+import Footer from '../footer';
+import Scroller from '../scroller';
+
+
 const PageLayout = (props) => {
   return (
     <div className="page-wrapper">
