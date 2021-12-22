@@ -235,7 +235,7 @@ const getMostRecentEvents = async function () {
 	query.include('creator');
 	query.equalTo('status','active');
 	query.greaterThan('date',new Date());
-	query.descending('date');
+	query.ascending('date');
 	query.limit(4);
 
 	try {
