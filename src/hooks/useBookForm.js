@@ -31,7 +31,7 @@ const useBookForm = (user,categories) => {
             category: categories,
             image: imagePreview
         }
-
+       console.log(book);
         if (validationError.title || validationError.description 
             || validationError.image || validationError.author) {
             return;
@@ -58,7 +58,6 @@ const useBookForm = (user,categories) => {
         if (validationError.required) {
             setValidationError(prev => ({ ...prev, "required": null }))
         }
-
         const data = new FormData(e.target)
         const book = {
             title: data.get('title'),

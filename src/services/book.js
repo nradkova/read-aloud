@@ -32,7 +32,9 @@ const editBook = async (bookId, data) => {
 		book.set('author', data.author);
 		book.set('description', data.description);
 		book.set('creator', Parse.User.current());
-		book.set('category', data.category);
+		if(data.category.length>0){
+			book.set('category', data.category);
+		}
 		book.set('imageUrl', data.image);
 		try {
 			const result = await book.save();

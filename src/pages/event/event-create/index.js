@@ -28,7 +28,6 @@ const EventCreate = () => {
 	} = useEventForm();
 
 	useEffect(() => {
-		console.log("bb");
 		if (isSuccess) {
 			navigate('/events');
 		}
