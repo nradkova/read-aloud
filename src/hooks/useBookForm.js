@@ -1,18 +1,18 @@
 import { useState, useCallback } from 'react';
 
-import { DEFAULT_BOOK_URL, INITIAL_BOOK_VALIDATION_ERROR, INITIAL_BOOK_VALUE } from '../common';
+import { DEFAULT_BOOK_CATEGORIES, DEFAULT_BOOK_URL, INITIAL_BOOK_VALIDATION_ERROR, INITIAL_BOOK_VALUE } from '../common';
 
 import uploadImage from '../services/image';
 import { bookDataValidation } from '../utils/validation';
 import { createBook, editBook, getBookById } from '../services/book';
 
 
-const useBookForm = (user,categories) => {
+const useBookForm = (user, categories) => {
     const [isLoading, setIsloading] = useState(false);
     const [isImageLoading, setIsImageloading] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [bookValue, setBookValue] = useState(INITIAL_BOOK_VALUE);
-    const[notCreator,setNotCreator]=useState(false);
+    const [notCreator, setNotCreator] = useState(false);
     const [validationError, setValidationError] = useState(INITIAL_BOOK_VALIDATION_ERROR);
     const [imagePreview, setImagePreview] = useState(DEFAULT_BOOK_URL);
 
@@ -22,34 +22,39 @@ const useBookForm = (user,categories) => {
         if (validationError.required) {
             setValidationError(prev => ({ ...prev, "required": null }))
         }
-
         const data = new FormData(e.target)
         const book = {
             title: data.get('title'),
             author: data.get('author'),
             description: data.get('description'),
-            category: categories,
             image: imagePreview
         }
-       console.log(book);
-        if (validationError.title || validationError.description 
+
+        if (validationError.title || validationError.description
             || validationError.image || validationError.author) {
             return;
         }
-        if (book.title==='' || book.description ==='' || book.author==='') {
-            setValidationError(prev=>({...prev,'required':'*Title, author and description are required.'}))
+        if (book.title === '' || book.description === '' || book.author === '') {
+            setValidationError(prev => ({ ...prev, 'required': '*Title, author and description are required.' }))
             return;
         }
 
+        const selectedCategories = DEFAULT_BOOK_CATEGORIES.reduce((a, x) => {
+            if (data.get(x)) {
+                a.push(x)
+            }
+            return a;
+        }, []);
+        book.category=selectedCategories;
         createBook(book)
             .then(res => {
                 setIsloading(true);
-                setBookValue(prev=>({...prev,res}));
+                setBookValue(prev => ({ ...prev, res }));
                 setIsSuccess(true);
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
 
-            bookFormReset();
+        bookFormReset();
     }
 
     const onSubmitBookEditHandler = (e) => {
@@ -67,19 +72,19 @@ const useBookForm = (user,categories) => {
             image: imagePreview
         }
 
-        if (validationError.title || validationError.description 
+        if (validationError.title || validationError.description
             || validationError.image || validationError.author) {
             return;
         }
-        if (book.title==='' || book.description ==='' || book.author==='') {
-            setValidationError(prev=>({...prev,'required':'*Title, author and description are required.'}))
+        if (book.title === '' || book.description === '' || book.author === '') {
+            setValidationError(prev => ({ ...prev, 'required': '*Title, author and description are required.' }))
             return;
         }
 
-        editBook(bookValue.id,book)
+        editBook(bookValue.id, book)
             .then(res => {
                 setIsloading(true);
-                setBookValue(prev=>({...prev,res}));
+                setBookValue(prev => ({ ...prev, res }));
                 setIsSuccess(true);
             })
             .catch(err => console.log(err))
@@ -90,7 +95,7 @@ const useBookForm = (user,categories) => {
     const onBlurInputHandler = (e) => {
         const value = e.target.value;
         const type = e.target.name;
-        
+
         if (validationError.required) {
             setValidationError(prev => ({ ...prev, "required": null }))
         }
@@ -105,7 +110,7 @@ const useBookForm = (user,categories) => {
     const onChangeInputHandler = (e) => {
         const value = e.target.value;
         const type = e.target.name;
-        
+
         if (validationError.required) {
             setValidationError(prev => ({ ...prev, "required": null }))
         }
@@ -119,8 +124,8 @@ const useBookForm = (user,categories) => {
 
     const onChangeImageHandler = (e) => {
         const value = e.target.files[0];
-        
-        const error =bookDataValidation('imageUrl', (value || ''));
+
+        const error = bookDataValidation('imageUrl', (value || ''));
         setValidationError(prev => ({ ...prev, 'image': error }))
         if (error) {
             return;
@@ -143,15 +148,15 @@ const useBookForm = (user,categories) => {
     const setInitialBookEditValue = useCallback((bookId) => {
         setIsloading(true);
         getBookById(bookId)
-        .then(res => {
-            setBookValue(res);
-            setImagePreview(res.imageUrl)
-            setIsloading(false);
-            if(res.creator!==user.username){
-                setNotCreator(true);
-            }
-        })
-        .catch(err => console.log(err))
+            .then(res => {
+                setBookValue(res);
+                setImagePreview(res.imageUrl)
+                setIsloading(false);
+                if (res.creator !== user.username) {
+                    setNotCreator(true);
+                }
+            })
+            .catch(err => console.log(err))
     }, [])
 
     const bookFormReset = () => {
@@ -162,7 +167,7 @@ const useBookForm = (user,categories) => {
         setImagePreview(DEFAULT_BOOK_URL);
     }
 
-    return{
+    return {
         bookValue,
         notCreator,
         isLoading,

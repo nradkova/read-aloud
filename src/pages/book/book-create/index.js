@@ -11,12 +11,12 @@ import Category from "../../../components/category";
 import PageLayout from "../../../components/page-layout";
 import ValidationError from "../../../components/validation-error";
 
-const categories = [];
 
 const BookCreate = () => {
 	const navigate = useNavigate();
 	const { user } = useContext(AuthContext);
-
+	const categories = [];
+	
 	const {
 		isLoading,
 		isImageLoading,
@@ -27,7 +27,7 @@ const BookCreate = () => {
 		onBlurInputHandler,
 		onSubmitBookCreateHandler
 	} = useBookForm(user,categories);
-
+	
 
 	useEffect(() => {
 		if (isSuccess) {
@@ -42,7 +42,7 @@ const BookCreate = () => {
 		  </PageLayout>
 		)
 	  }
-	  console.log(categories);
+	  
 	return (
 		<PageLayout>
 			<div className="book-form-container">
