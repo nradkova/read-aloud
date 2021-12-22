@@ -114,14 +114,12 @@ const MyPage = () => {
 	
 	useEffect(()=>{
 		if(notification.message.includes('book') && notification.result==="confirm"){
-			console.log("in");
 			authServices.removeBookFromUserReadingList(userId, notification.objectId)
 			.then(res=>{
 				setUpdate({reading:res,events:false});
 			})
 		}
 		if(notification.message.includes('event') && notification.result==="confirm"){
-			console.log("in");
 			unsignSubscription(user.username, notification.objectId)
 			.then(res=>{
 				setUpdate({reading:false,events:res});
