@@ -74,7 +74,7 @@ const Home = () => {
         <h1 className="read-aloud-header">&gt;&gt;&gt; read aloud &lt;&lt;&lt; </h1>
         <h3> IS A PLACE TO </h3>
         <h3> PRESENT YOUR FAVOURITE BOOKS AND FIND FRIENDS.</h3>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nulla sequi ipsam modi quas doloribus a impedit quibusdam id numquam officia commodi voluptate maxime nihil assumenda temporibus, voluptatem accusantium minus?
+        <h3>Read Aloud is a social platform, where users publish posts about books, they love. Events on different themes are organised in order to join people with similar interests and hobbies.Everyone is welcomed. There is only one condition - to love reading.</h3>
       </section>
       <section className="inner-container-img">
         <img src="/read-aloud/reading-time.jpg" alt="Reading Time" />
