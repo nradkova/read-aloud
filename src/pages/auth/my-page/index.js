@@ -29,8 +29,8 @@ const MyPage = () => {
 	const [readingList, setReadingList] = useState({all:[],view:[]});
 	const [eventList, setEventList] = useState({all:[],view:[]});
 	const [totalPages, setTotalPages] = useState({reading:0,events:0});
-	const [readingListButton, setReadingListButton] = useState({increase:true,decrease:true});
-	const [eventListButton, setEventListButton] = useState({increase:true,decrease:true});
+	const [readingListButtonsDisabled, setReadingListButtonsDisabled] = useState({increase:true,decrease:true});
+	const [eventListButtonsDisabled, setEventListButtonsDisabled] = useState({increase:true,decrease:true});
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -44,60 +44,65 @@ const MyPage = () => {
 			const eventPages = Math.ceil(fetchedEventListData.length / 3);
 
 			setTotalPages({reading:readingPages,events:eventPages});
+			
 			if (readingPages > 1) {
-				setReadingListButton(prev=>({...prev,increase:false}));
+				setReadingListButtonsDisabled({increase:false,decrease:true});
 			}else{
-				setReadingListButton({increase:true,decrease:true});
-				pagesReadingCounter=1;
+				setReadingListButtonsDisabled({increase:true,decrease:true});
 			}
+			pagesReadingCounter=1;
 
 			if (eventPages > 1) {
-				setEventListButton(prev=>({...prev,increase:false}));
+				setEventListButtonsDisabled(prev=>({...prev,increase:false}));
 			}else{
-				setEventListButton({increase:true,decrease:true});
-				pagesEventCounter=1;
+				setEventListButtonsDisabled({increase:true,decrease:true});
 			}
-			setReadingList({all:fetchedReadingListData,view:fetchedReadingListData.slice(0, 3)});
-			setEventList({all:fetchedEventListData,view:fetchedEventListData.slice(0, 3)});
+			pagesEventCounter=1;
+			
+			setReadingList(prev=>({all:fetchedReadingListData,view:fetchedReadingListData.slice(0, 3)}));
+			setEventList(prev=>({all:fetchedEventListData,view:fetchedEventListData.slice(0, 3)}));
 		}
 		fetchData()
-
 	}, [userId,update])
 
 	const increaseReadingCounter = () => {
 		pagesReadingCounter++;
 		if (pagesReadingCounter >= totalPages.reading) {
-			setReadingListButton(prev=>({...prev,increase:true}));
+			setReadingListButtonsDisabled(prev=>({increase:true,decrease:false}));
+		}else{
+			setReadingListButtonsDisabled(prev=>({increase:false,decrease:false}));
 		}
 		setReadingList(prev=>({...prev,view:readingList.all.slice((pagesReadingCounter * 3) - 3, pagesReadingCounter * 3)}));
-		setReadingListButton(prev=>({...prev,decrease:false}));
 	}
 
 	const decreaseReadingCounter = () => {
 		pagesReadingCounter--;
 		if (pagesReadingCounter === 1) {
-			setReadingListButton(prev=>({decrease:true,increase:true}));
+			setReadingListButtonsDisabled(prev=>({increase:false,decrease:true}));
+		}else{
+			setReadingListButtonsDisabled(prev=>({increase:false,decrease:false}));
 		}
 		setReadingList(prev=>({...prev,view:readingList.all.slice((pagesReadingCounter * 3) - 3, pagesReadingCounter * 3)}));
-		setReadingListButton(prev=>({...prev,increase:false}));
 	}
 
 	const increaseEventCounter = () => {
 		pagesEventCounter++;
 		if (pagesEventCounter >= totalPages.events) {
-			setEventListButton(prev=>({...prev,increase:true}));
+			setEventListButtonsDisabled(prev=>({increase:true,decrease:false}));
+		}else{
+			setEventListButtonsDisabled(prev=>({increase:false,decrease:false}));
 		}
 		setEventList(prev=>({...prev,view:eventList.all.slice((pagesEventCounter * 3) - 3, pagesEventCounter * 3)}));
-		setEventListButton(prev=>({...prev,decrease:false}));
 	}
 
 	const decreaseEventCounter = () => {
 		pagesEventCounter--;
 		if (pagesEventCounter === 1) {
-			setEventListButton(prev=>({decrease:true,increase:true}));
+			setEventListButtonsDisabled(prev=>({increase:false,decrease:true}));
+		}else{
+			setEventListButtonsDisabled(prev=>({increase:false,decrease:false}));
 		}
 		setEventList(prev=>({...prev,view:eventList.all.slice((pagesEventCounter * 3) - 3, pagesEventCounter * 3)}));
-		setEventListButton(prev=>({...prev,increase:false}));
 	}
 
 	const onClickRemoveBook = async (e, id) => {
@@ -116,13 +121,13 @@ const MyPage = () => {
 		if(notification.message.includes('book') && notification.result==="confirm"){
 			authServices.removeBookFromUserReadingList(userId, notification.objectId)
 			.then(res=>{
-				setUpdate({reading:res,events:false});
+				setUpdate(prev=>({reading:res,events:false}));
 			})
 		}
 		if(notification.message.includes('event') && notification.result==="confirm"){
 			unsignSubscription(user.username, notification.objectId)
 			.then(res=>{
-				setUpdate({reading:false,events:res});
+				setUpdate(prev=>({reading:false,events:res}));
 			})
 		}
 
@@ -153,11 +158,11 @@ const MyPage = () => {
 					{eventList.view.length > 0
 						? <>
 							<div className="my-page-reading-list-items-container">
-								<button className="prev" disabled={eventListButton.decrease} onClick={decreaseEventCounter}>&#10094;</button>
+								<button className="prev" disabled={eventListButtonsDisabled.decrease} onClick={decreaseEventCounter}>&#10094;</button>
 								<div className="my-page-reading-list-items">
 									{eventList.view.map(x => <EventCardLite onClickSignoutEvent={(e) => onClickRemoveEvent(e, x.subscriptionId)} key={x.subscriptionId} eventId={x.eventId} imageUrl={x.imageUrl} date={x.date} name={x.name} status={x.status} />)}
 								</div>
-								<button className="next" disabled={eventListButton.increase} onClick={increaseEventCounter}>&#10095;</button>
+								<button className="next" disabled={eventListButtonsDisabled.increase} onClick={increaseEventCounter}>&#10095;</button>
 							</div>
 							<p>{pagesEventCounter}/{totalPages.events}</p>
 						</>
@@ -170,11 +175,11 @@ const MyPage = () => {
 					{readingList.view.length > 0
 						? <>
 							<div className="my-page-reading-list-items-container">
-								<button className="prev" disabled={readingListButton.decrease} onClick={decreaseReadingCounter}>&#10094;</button>
+								<button className="prev" disabled={readingListButtonsDisabled.decrease} onClick={decreaseReadingCounter}>&#10094;</button>
 								<div className="my-page-reading-list-items">
 									{readingList.view.map(x => <BookCardLite onClickRemoveBook={(e) => onClickRemoveBook(e, x.id)} key={x.id} userId={userId} bookId={x.id} imageUrl={x.imageUrl} title={x.title} author={x.author} />)}
 								</div>
-								<button className="next" disabled={readingListButton.increase} onClick={increaseReadingCounter}>&#10095;</button>
+								<button className="next" disabled={readingListButtonsDisabled.increase} onClick={increaseReadingCounter}>&#10095;</button>
 							</div>
 							<p>{pagesReadingCounter}/{totalPages.reading}</p>
 						</>
