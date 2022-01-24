@@ -182,18 +182,18 @@ label {
 }
 
 @media screen and (max-width: 870px) {
-  .event-form-body {
+  .book-form-body {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
   }
-  .event-form-body-main,
-  .event-form-body-details {
+  .book-form-body-main,
+  .book-form-body-details {
     width: 80%;
   }
 
-  .event-default-image img {
-    width: 100%;
+  .default-image img {
+    min-width: 100%;
   }
 }

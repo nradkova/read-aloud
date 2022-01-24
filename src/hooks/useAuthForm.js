@@ -78,6 +78,9 @@ function useAuthForm() {
         if (validationError.username || validationError.password) {
             return;
         }
+        if (user.username==='' || user.password==='') {
+            return;
+        }
 
         userService.login(user)
             .then(user => {

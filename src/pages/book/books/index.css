@@ -155,6 +155,8 @@ input.popup-author:checked ~ i.fa-edit {
 .books-container.search {
   align-items: center;
   min-height: 40vh;
+  display: flex;
+  justify-content: space-around;
 }
 
 .search-container p {
@@ -204,18 +206,36 @@ input.popup-author:checked ~ i.fa-edit {
     align-items: center;
   }
 
-  .main-input{
+  .main-input {
     width: 100%;
   }
+
   .books-container {
     display: flex;
     justify-content: space-around;
     flex-wrap: nowrap;
   }
+
   .search-posts {
     margin-bottom: 2%;
+    text-align: center;
   }
+
   .search-options-list {
     display: block;
+  }
+  .search-my-posts,
+  .search-all-posts {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
 }
+@media screen and (max-width: 640px) {
+  .main-input {
+    font-size: 1.1em;
+    margin: 4% 0%;
+  }
+  .search-container form {
+    font-size: 1em;
+  }
 }

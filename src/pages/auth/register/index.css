@@ -52,7 +52,21 @@
   .signup-section {
     top: 51%;
     left: 50%;
-    width: 550px;
-    height: 375px;
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .signup-section {
+    top: 60%;
+  }
+  .input-fields{
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .input-fields{
+    width: 140px;
   }
 }

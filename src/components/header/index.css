@@ -46,13 +46,20 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    height: 9rem;
   }
- 
+
   .logo-container-header,
-  .links-container{
+  .links-container {
     justify-content: center;
     width: 80%;
     margin-bottom: 3%;
   }
-
+  .logo-container-header {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .logo-header {
+    margin-right: 0;
+  }
 }

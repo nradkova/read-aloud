@@ -96,7 +96,7 @@ const Home = () => {
       {pageIntro}
       <div className="inner-container-books-events">
         <section className="inner-container-books">
-          <div className="books-container">
+          <div className="books-container-items">
             {books.map(x => <BookCardMedium key={x.id} id={x.id} imageUrl={x.imageUrl} title={x.title} author={x.author} rating={x.rating} />)}
           </div>
           {books.length > 0
@@ -108,7 +108,7 @@ const Home = () => {
           }
         </section>
         <section className="inner-container-events">
-          <div className="events-container">
+          <div className="events-container-items">
             {events.map(x => <EventCardMedium key={x.id} id={x.id} imageUrl={x.imageUrl} name={x.name} createdAt={x.createdAt} date={x.date} status={x.status} />)}
           </div>
           {events.length > 0

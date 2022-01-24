@@ -99,8 +99,8 @@
   padding-left: 5%;
 }
 
-.books-container,
-.events-container {
+.books-container-items,
+.events-container-items {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -116,5 +116,9 @@
   .label-container {
     padding-left: 0;
     align-self: center;
+}
+.events-container,
+.books-container{
+
 }
 }

@@ -1,6 +1,6 @@
 .signin-section {
   position: absolute;
-  top: 50%;
+  top: 51%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 800px;
@@ -17,14 +17,15 @@
   content: " ";
   display: block;
   position: absolute;
-  left: -384px;
+  right: 0px;
   top: 106px;
-  width: 126%;
+  width: 124%;
   height: 74%;
   opacity: 0.5;
   background-image: url("../../../components/images/flowers-g9a10bbc29_1920.jpg");
   z-index: -10;
   background-repeat: no-repeat;
+  background-position: top;
 }
 
 .signin-section-info {
@@ -91,7 +92,21 @@
   .signin-section {
     top: 51%;
     left: 50%;
-    width: 550px;
-    height: 375px;
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .signin-section {
+    top: 60%;
+  }
+  .input-fields{
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .input-fields{
+    width: 140px;
   }
 }
