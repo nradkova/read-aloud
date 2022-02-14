@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/read-aloud/static/css/main.f89426e8.chunk.css",
-    "main.js": "/read-aloud/static/js/main.e06af4f3.chunk.js",
-    "main.js.map": "/read-aloud/static/js/main.e06af4f3.chunk.js.map",
+    "main.css": "/read-aloud/static/css/main.b30eb1f8.chunk.css",
+    "main.js": "/read-aloud/static/js/main.6aeacfa3.chunk.js",
+    "main.js.map": "/read-aloud/static/js/main.6aeacfa3.chunk.js.map",
     "runtime-main.js": "/read-aloud/static/js/runtime-main.b10447a7.js",
     "runtime-main.js.map": "/read-aloud/static/js/runtime-main.b10447a7.js.map",
     "static/js/2.6972201b.chunk.js": "/read-aloud/static/js/2.6972201b.chunk.js",
@@ -10,14 +10,14 @@
     "static/js/3.68cb070f.chunk.js": "/read-aloud/static/js/3.68cb070f.chunk.js",
     "static/js/3.68cb070f.chunk.js.map": "/read-aloud/static/js/3.68cb070f.chunk.js.map",
     "index.html": "/read-aloud/index.html",
-    "static/css/main.f89426e8.chunk.css.map": "/read-aloud/static/css/main.f89426e8.chunk.css.map",
+    "static/css/main.b30eb1f8.chunk.css.map": "/read-aloud/static/css/main.b30eb1f8.chunk.css.map",
     "static/js/2.6972201b.chunk.js.LICENSE.txt": "/read-aloud/static/js/2.6972201b.chunk.js.LICENSE.txt",
     "static/media/index.css": "/read-aloud/static/media/flowers-g9a10bbc29_1920.41f5bab4.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.b10447a7.js",
     "static/js/2.6972201b.chunk.js",
-    "static/css/main.f89426e8.chunk.css",
-    "static/js/main.e06af4f3.chunk.js"
+    "static/css/main.b30eb1f8.chunk.css",
+    "static/js/main.6aeacfa3.chunk.js"
   ]
 }
