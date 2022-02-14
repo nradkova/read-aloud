@@ -40,6 +40,9 @@ const EventDetails = () => {
 			if(event.status==="cancelled"){
 				return <p className="added-to-event-list">CANCELLED EVENT</p>;
 			}
+			if(new Date(event.date)<Date.now()){
+				return <p className="added-to-event-list">EXPIRED EVENT</p>;
+			}
 			return <p className="added-to-event-list">ADDED TO YOUR LIST</p>;
 		}
 	}

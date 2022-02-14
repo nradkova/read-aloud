@@ -69,6 +69,13 @@
   color: red;
 }
 
+.fa-search{
+  padding: 3px;
+  border: 3px solid;
+  border-radius: 11px;
+  background-color: lightcyan;
+}
+
 .search-options-label-title,
 .search-options-label-category,
 .search-options-label-author,

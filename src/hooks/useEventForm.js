@@ -37,17 +37,17 @@ const useEventForm = (user) => {
         const dateError = eventDataValidation('date', event.date,data.get('month'));
         setValidationError(prev => ({ ...prev, 'date': dateError }));
        
+        
+        if (event.name === '' || event.description === ''
+        || JSON.stringify(event.location) === JSON.stringify(DEFAULT_LAG_LTD)) {
+            setValidationError(prev => ({ ...prev, 'required': '*Topic, description, date and location are required.' }))
+            return;
+        }
+        
         if (validationError.name || validationError.description
             || validationError.image || dateError) {
             return;
         }
-
-        if (event.name === '' || event.description === ''
-            || JSON.stringify(event.location) === JSON.stringify(DEFAULT_LAG_LTD)) {
-            setValidationError(prev => ({ ...prev, 'required': '*Topic, description, date and location are required.' }))
-            return;
-        }
-
         createEvent(event)
             .then(res => {
                 setIsloading(true);
@@ -74,13 +74,14 @@ const useEventForm = (user) => {
         const dateError = eventDataValidation('date', event.date,data.get('month'));
         setValidationError(prev => ({ ...prev, 'date': dateError }));
 
-        if (validationError.name || validationError.description
-            || validationError.image || dateError) {
-            return;
-        }
-
+        
         if (event.name === '' || event.description === '') {
             setValidationError(prev => ({ ...prev, 'required': '*Topic, description, date and location are required.' }))
+            return;
+        }
+        
+        if (validationError.name || validationError.description
+            || validationError.image || dateError) {
             return;
         }
 

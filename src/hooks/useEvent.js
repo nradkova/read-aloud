@@ -36,14 +36,13 @@ const useEvent = (eventId, isAuthenticated, user) => {
 			const event = await getEventById(eventId);
 			setIsloading(false);
 			setEvent(event);
-			if (isAuthenticated && user.username !== event.creator 
-				&& !event.subscribed.includes(user.username) && event.status==="active") {
+
+			const eventDate = new Date(event.date)
+			if (isAuthenticated && user.username !== event.creator
+				&& !event.subscribed.includes(user.username) 
+				&& event.status === "active" && eventDate >= Date.now()) {
 				setCanSubscribe(true);
 			}
-			// if (Boolean(user.username) && user.username !== book.creator) {
-			// 	const canAdd = await userService.checkBookInUserReadingList(user.userId, bookId);
-			// 	setCanAdd(canAdd);
-			// }
 			const comments = await getAllCommentsByEventId(eventId);
 			setComments(comments);
 		}
@@ -54,8 +53,8 @@ const useEvent = (eventId, isAuthenticated, user) => {
 	const onClickAddEventHandler = async (e) => {
 		e.preventDefault();
 		await signSubscription(user.username, event.subscriptionId, event.subscribed);
-		const updatedSuscribed=[...event.subscribed,user.username];
-		setEvent(prev=>({...prev,subscribed:updatedSuscribed}));
+		const updatedSuscribed = [...event.subscribed, user.username];
+		setEvent(prev => ({ ...prev, subscribed: updatedSuscribed }));
 		setCanSubscribe(false);
 	}
 

@@ -157,16 +157,16 @@ const MyPage = () => {
 					<h3 className="my-page-events-list-title">MY EVENT SCHEDULE</h3>
 					{eventList.view.length > 0
 						? <>
-							<div className="my-page-reading-list-items-container">
+							<div className="my-page-events-list-items-container">
 								<button className="prev" disabled={eventListButtonsDisabled.decrease} onClick={decreaseEventCounter}>&#10094;</button>
-								<div className="my-page-reading-list-items">
+								<div className="my-page-events-list-items">
 									{eventList.view.map(x => <EventCardLite onClickSignoutEvent={(e) => onClickRemoveEvent(e, x.subscriptionId)} key={x.subscriptionId} eventId={x.eventId} imageUrl={x.imageUrl} date={x.date} name={x.name} status={x.status} />)}
 								</div>
 								<button className="next" disabled={eventListButtonsDisabled.increase} onClick={increaseEventCounter}>&#10095;</button>
 							</div>
 							<p>{pagesEventCounter}/{totalPages.events}</p>
 						</>
-						: <p className="empty-reading-list">You have not added anything to your event list yet.</p>
+						: <p className="empty-events-list">You have not added anything to your event list yet.</p>
 					}
 
 				</div>

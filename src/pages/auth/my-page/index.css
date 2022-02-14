@@ -37,13 +37,15 @@
   margin-right: 8px;
 }
 
-.my-page-reading-list-items-container {
+.my-page-reading-list-items-container,
+.my-page-events-list-items-container{
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 
-.my-page-reading-list-items {
+.my-page-reading-list-items,
+.my-page-events-list-items {
   display: flex;
 }
 
@@ -84,9 +86,11 @@
   .my-page-navigation:before {
     top: 26%;
     left: 0;
+    background-image: none;
+    border-bottom: none;
   }
   .my-page-reading-list-items,
-  .my-page-reading-list-items {
+  .my-page-events-list-items {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -96,8 +100,8 @@
   }
 }
 
-@media screen and (max-width: 850px) {
+/* @media screen and (max-width: 850px) {
   .my-page-navigation:before {
     background-image: none;
   }
-}
+} */

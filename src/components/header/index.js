@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 
 import './index.css';
 
-import getNavigation from '../../utils/navigation'
+import getNavigation from '../../utils/navigation';
 import AuthContext from '../../context/authContext';
 
 import Link from '../nav-link';
@@ -17,7 +17,7 @@ const Header = () => {
     setLinks(getNavigation(isAuthenticated, user))
   }, [user])
   
-  const date = new Date().toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })
+  const date = new Date().toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' });
 
   return (
     <header className="header-wrapper">

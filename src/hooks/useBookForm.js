@@ -30,15 +30,16 @@ const useBookForm = (user, categories) => {
             image: imagePreview
         }
 
-        if (validationError.title || validationError.description
-            || validationError.image || validationError.author) {
-            return;
-        }
         if (book.title === '' || book.description === '' || book.author === '') {
             setValidationError(prev => ({ ...prev, 'required': '*Title, author and description are required.' }))
             return;
         }
-
+        
+        if (validationError.title || validationError.description
+            || validationError.image || validationError.author) {
+            return;
+        }
+        
         const selectedCategories = DEFAULT_BOOK_CATEGORIES.reduce((a, x) => {
             if (data.get(x)) {
                 a.push(x)
@@ -72,12 +73,13 @@ const useBookForm = (user, categories) => {
             image: imagePreview
         }
 
-        if (validationError.title || validationError.description
-            || validationError.image || validationError.author) {
-            return;
-        }
         if (book.title === '' || book.description === '' || book.author === '') {
             setValidationError(prev => ({ ...prev, 'required': '*Title, author and description are required.' }))
+            return;
+        }
+        
+        if (validationError.title || validationError.description
+            || validationError.image || validationError.author) {
             return;
         }
 

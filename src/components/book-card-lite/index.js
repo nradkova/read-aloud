@@ -13,7 +13,7 @@ const BookCardLite = ({onClickRemoveBook, userId,bookId, imageUrl, title, author
             </span>
             <div className="book-card-lite-content">
                 <div className="book-card-lite-content-text">
-                    <p><span className="book-card-lite-content-heading" >Title: </span>{title}</p>
+                    <p> <span className="book-card-lite-content-heading" >Title: </span>{title}</p>
                     <p> <span className="book-card-lite-content-heading"> Author: </span>{author}</p>
                 </div>
                 <div className="book-card-lite-content-actions">
