@@ -7,7 +7,6 @@ import useEventSearch from "../../../hooks/useEventSearch";
 
 import Title from "../../../components/title";
 import Loader from "../../../components/loader";
-import PageLayout from "../../../components/page-layout";
 import EventCardMedium from "../../../components/medium-event-card";
 
 const Events = () => {
@@ -94,7 +93,7 @@ const Events = () => {
   )
 
   return (
-    <PageLayout>
+      <>
       <Title title="EVENTS" />
       <div className="search-events">
         {searchAllEvents}
@@ -105,7 +104,7 @@ const Events = () => {
       <div className="all-events-container">
         {isLoading ? <Loader /> : searchResults}
       </div>
-    </PageLayout>
+      </>
   )
 }
 

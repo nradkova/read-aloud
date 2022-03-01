@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { INITIAL_AUTH_VALIDATION_ERROR, INITIAL_AUTH_VALUE, INITIAL_USER_FORM_VALUE } from '../common';
+import { INITIAL_AUTH_VALIDATION_ERROR, INITIAL_AUTH_VALUE, INITIAL_USER_FORM_VALUE } from '../constants/common';
 
 import userService from '../services/user';
 import { userDataValidation } from '../utils/validation';

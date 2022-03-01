@@ -6,8 +6,6 @@ import './index.css'
 import userService from "../../../services/user";
 import AuthContext from "../../../context/authContext";
 
-import PageLayout from "../../../components/page-layout";
-
 
 const Logout = () => {
   const { logout } = useContext(AuthContext);
@@ -23,7 +21,7 @@ const Logout = () => {
 
 
   return (
-    <PageLayout>
+    <>
      <h1 className="page-title-logout">Logout</h1>
       <div className="signout-section-wrapper">
         <div className="signout-section">
@@ -34,7 +32,7 @@ const Logout = () => {
           <input type="submit" className="logout-btn" onClick={onSubmitLogoutHandler} value="Confirm" />
         </div>
       </div>
-    </PageLayout>
+    </>
   )
 }
 

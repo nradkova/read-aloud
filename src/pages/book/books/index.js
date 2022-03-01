@@ -7,7 +7,6 @@ import useBookSearch from "../../../hooks/useBookSearch";
 
 import Title from "../../../components/title";
 import Loader from "../../../components/loader";
-import PageLayout from "../../../components/page-layout";
 import BookCardMedium from "../../../components/book-card-medium";
 import ValidationError from "../../../components/validation-error";
 
@@ -78,7 +77,7 @@ const Books = () => {
 	)
 
 	return (
-		<PageLayout>
+		<>
 			<Title title="Books" />
 			<div className="search-posts">
 			{searchAllPosts}
@@ -124,7 +123,7 @@ const Books = () => {
 				</div>
 				{isLoading ?<Loader/> :searchResults}
 			</div>
-		</PageLayout>
+			</>
 	)
 }
 

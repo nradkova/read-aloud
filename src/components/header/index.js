@@ -8,15 +8,15 @@ import AuthContext from '../../context/authContext';
 import Link from '../nav-link';
 import LogoLink from '../logo-link';
 
-
 const Header = () => {
-  const { user,isAuthenticated } = useContext(AuthContext);
+  const { user, isAuthenticated } = useContext(AuthContext);
   const [links, setLinks] = useState([]);
 
   useEffect(() => {
     setLinks(getNavigation(isAuthenticated, user))
-  }, [user])
-  
+  }, [user, isAuthenticated])
+
+
   const date = new Date().toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' });
 
   return (

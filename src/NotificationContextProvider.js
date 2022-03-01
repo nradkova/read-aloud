@@ -1,6 +1,6 @@
 import { useState,useCallback } from 'react';
 
-import { INITIAL_NOTIFICATION_VALUE } from './common';
+import { INITIAL_NOTIFICATION_VALUE } from './constants/common';
 
 import NotificationContext from './context/notificationContext';
 

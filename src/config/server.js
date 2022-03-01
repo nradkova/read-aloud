@@ -1,5 +1,5 @@
 import Parse from 'parse/dist/parse.min.js';
-import { serverKeys } from '../keys';
+import { serverKeys } from '../constants/keys';
 
 
 const PARSE_APPLICATION_ID = serverKeys.PARSE_APPLICATION_ID;

@@ -1,0 +1,198 @@
+.event-details-container {
+  min-height: 63vh;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(249 248 248);
+  padding: 2% 2%;
+}
+
+.event-main {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: 0px 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.event-schedule,
+.event-heading {
+  margin-top: 0%;
+  font-size: 1.1em;
+  font-family: cursive;
+}
+
+.event-details {
+  margin-bottom: 10px;
+}
+
+.event-details span {
+  margin-left: 15px;
+}
+
+.event-details span i {
+  margin-right: 5px;
+}
+
+.status-active,
+.fa-chart-line {
+  margin-right: 10px;
+  color: rgb(135, 165, 167);
+}
+
+.status-cancelled,
+.fa-ban {
+  margin-right: 10px;
+  color: red;
+}
+
+.event-image {
+  width: 80%;
+  margin-top: 2%;
+}
+
+.event-image img {
+  max-width: 450px;
+  max-height: 450px;
+  width: 100%;
+}
+
+.event-subscribed {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  border: 1px solid lightgrey;
+  box-shadow: inset -1px -1px 2px 1px lightgrey;
+  border-radius: 12px;
+  padding: 12px 10px;
+  margin-bottom: 1%;
+  width: 80%;
+}
+
+.event-subscribed span {
+  margin-right: 8px;
+}
+
+.fa-user-circle.subscribed {
+  margin-right: 3px;
+}
+
+.event-additional {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.event-comments {
+  overflow-y: scroll;
+  height: 400px;
+  background-color: white;
+  min-width: 100%;
+  border: 1px solid white;
+}
+
+.event-comments-form form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.comment-input {
+  border-radius: 6px;
+  border: none;
+}
+
+.comment-btn {
+  font-size: 1.6em;
+  color: rgb(162, 186, 187);
+  border: none;
+  display: block;
+  background-color: transparent;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.event-actions {
+  width: 15%;
+  align-self: flex-start;
+}
+
+.event-actions-icon {
+  width: 100%;
+}
+
+.fa-calendar-check {
+  font-size: 65px;
+  color: rgb(135, 165, 167);
+}
+
+.edit-link,
+.join-link,
+.add-to-event-list-link {
+  margin: 15px 30px;
+  text-decoration: none;
+  color: rgb(135, 165, 167);
+  font-weight: bold;
+}
+
+.added-to-event-list {
+  color: darkslateblue;
+}
+
+.comment-error {
+  font-size: 0.8em;
+  margin-top: 0;
+  color: red;
+}
+
+.event-map-container {
+  width: 100%;
+  margin-bottom: 8%;
+}
+
+.event-map-container .map-event {
+  width: 100%;
+  margin: 0px;
+}
+
+@media screen and (max-width: 850px) {
+  .event-details-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .event-main {
+    width: 80%;
+  }
+
+  .event-additional {
+    margin-top: 2%;
+    width: 70%;
+  }
+
+  .event-image img {
+    width: 100%;
+  }
+  .event-actions {
+    width: 30%;
+    order: -1;
+    margin-bottom: 2%;
+    align-self: center;
+  }
+}

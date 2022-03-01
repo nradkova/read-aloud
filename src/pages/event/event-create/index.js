@@ -8,7 +8,6 @@ import useEventForm from "../../../hooks/useEventForm";
 
 import Loader from "../../../components/loader";
 import MapEvent from "../../../components/map-event";
-import PageLayout from "../../../components/page-layout";
 import ValidationError from "../../../components/validation-error";
 
 const EventCreate = () => {
@@ -35,14 +34,14 @@ const EventCreate = () => {
 
 	if (isLoading) {
 		return (
-			<PageLayout>
+			<>
 				<Loader />
-			</PageLayout>
+			</>
 		)
 	}
 
 	return (
-		<PageLayout>
+		<>
 			<div className="event-form-container">
 				<div className="event-form-title">
 					<h3><i className="fa fa-arrow-right"></i>New event</h3>
@@ -93,7 +92,7 @@ const EventCreate = () => {
 					</div>
 				</form>
 			</div>
-		</PageLayout>
+		</>
 	)
 }
 

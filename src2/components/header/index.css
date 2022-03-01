@@ -1,0 +1,65 @@
+.header-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: 6rem;
+  margin: 5px 15px;
+}
+
+.logo-container-header {
+  display: flex;
+  align-items: center;
+  min-width: 250px;
+}
+
+.logo-header {
+  margin-right: 10%;
+}
+
+.logo-img-header {
+  max-height: 60px;
+}
+
+.text-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.read-aloud {
+  font-family: "Lobster", cursive;
+  font-size: 1.5rem;
+  margin-bottom: 3%;
+}
+
+.links-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 50%;
+}
+
+@media screen and (max-width: 700px) {
+  .header-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 9rem;
+  }
+
+  .logo-container-header,
+  .links-container {
+    justify-content: center;
+    width: 80%;
+    margin-bottom: 3%;
+  }
+  .logo-container-header {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .logo-header {
+    margin-right: 0;
+  }
+}

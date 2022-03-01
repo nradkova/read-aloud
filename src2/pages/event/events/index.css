@@ -1,0 +1,123 @@
+.all-events-search {
+  text-align: left;
+  border-bottom: 1px solid black;
+}
+
+.events-inner-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 15px 30px;
+  justify-content: space-evenly;
+  margin-top: 2%;
+  max-width: 70%;
+}
+
+.search-events {
+  text-align: end;
+  margin-top: -2%;
+}
+.search-my-events,
+.search-all-events {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 50px;
+  width: 6%;
+}
+
+.search-my-events-action,
+.search-all-events-action {
+  display: block;
+  cursor: pointer;
+  color: rgb(135, 165, 167);
+  font-weight: bold;
+}
+
+.search-my-events-icon,
+.search-all-events-icon {
+  text-align: center;
+}
+
+.search-container {
+  display: inline-block;
+  padding: 6px 30px;
+  border: 1px solid black;
+  border-radius: 40px;
+  width: 50%;
+}
+
+.search-message,
+.search-pages {
+  text-align: left;
+  font-size: 1.3em;
+  padding: 8px 50px;
+  color: black;
+  background-color: rgb(135, 165, 167);
+}
+.search-pages {
+  text-align: center;
+}
+
+.search-message strong {
+  color: white;
+}
+
+.events-container.search {
+  align-items: center;
+  min-height: 40vh;
+  display: flex;
+  justify-content: space-around;
+}
+
+.search-container p {
+  font-size: 0.8em;
+}
+
+.prev-events,
+.next-events {
+  cursor: pointer;
+  width: auto;
+  height: fit-content;
+  padding: 16px;
+  color: darkolivegreen;
+  font-weight: bold;
+  font-size: 21px;
+  transition: 0.6s ease;
+  user-select: none;
+  border-radius: 3px 0 0 3px;
+  border: 1px solid darkolivegreen;
+}
+
+.prev-events:hover,
+.next-events:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+.prev-events:disabled,
+.next-events:disabled {
+  color: lightgrey;
+  background-color: lightgrey;
+  border: none;
+  visibility: hidden;
+}
+
+@media screen and (max-width: 700px) {
+  .events-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+  }
+
+  .search-events {
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+  .search-my-events,
+  .search-all-events {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}

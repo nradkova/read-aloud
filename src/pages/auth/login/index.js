@@ -8,7 +8,6 @@ import AuthContext from "../../../context/authContext";
 
 import Title from "../../../components/title";
 import Loader from "../../../components/loader";
-import PageLayout from "../../../components/page-layout";
 import ValidationError from "../../../components/validation-error";
 
 
@@ -36,14 +35,14 @@ const Login = () => {
 
 	if (isLoading) {
 		return (
-			<PageLayout>
+			<>
 				<Loader />
-			</PageLayout>
+			</>
 		)
 	}
 
 	return (
-		<PageLayout>
+		<>
 			<Title title="Login" />
 			<div className="signin-section-wrapper">
 				<div className="signin-section">
@@ -72,7 +71,7 @@ const Login = () => {
 					</form>
 				</div>
 			</div>
-		</PageLayout>
+		</>
 	)
 }
 

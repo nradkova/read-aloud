@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { MapContainer, Marker, Popup, TileLayer, useMapEvent } from 'react-leaflet';
 
 import './index.css';
-import { DEFAULT_LAG_LTD, DEFAULT_MAP_CENTER, DEFAULT_MAP_CENTER_CITY } from '../../common';
+import { DEFAULT_LAG_LTD, DEFAULT_MAP_CENTER, DEFAULT_MAP_CENTER_CITY } from '../../constants/common';
 
 
 const MapComponent = ({ getGeoPoint }) => {
@@ -27,7 +27,6 @@ const MapComponent = ({ getGeoPoint }) => {
 
 
 const MapEvent = ({ getGeoPoint, center, message }) => {
- 
   return (
     <div className="map-event">
       <MapContainer center={center || DEFAULT_MAP_CENTER} zoom={8} scrollWheelZoom={false}>
@@ -35,12 +34,15 @@ const MapEvent = ({ getGeoPoint, center, message }) => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={center ||DEFAULT_MAP_CENTER}>
+        <Marker position={center || DEFAULT_MAP_CENTER}>
           <Popup>
-            {message || DEFAULT_MAP_CENTER_CITY}
+            {message && center
+              ? <span> {message} <br /> {center[0].toString().slice(0, 7)}, {center[1].toString().slice(0, 7)} </span>
+              : DEFAULT_MAP_CENTER_CITY
+            }
           </Popup>
         </Marker>
-        <MapComponent  getGeoPoint={getGeoPoint} />
+        <MapComponent getGeoPoint={getGeoPoint} />
       </MapContainer>
     </div>
   )

@@ -1,0 +1,112 @@
+.signin-section {
+  position: absolute;
+  top: 51%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  width: 800px;
+  height: 450px;
+  text-align: center;
+  display: flex;
+  color: white;
+  box-shadow: 3px 10px 20px 0px rgba(0, 0, 0, 0.5);
+  margin-top: 2%;
+}
+
+.signin-section-wrapper:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  right: 0px;
+  top: 106px;
+  width: 124%;
+  height: 74%;
+  opacity: 0.5;
+  background-image: url("../../../components/images/flowers-g9a10bbc29_1920.jpg");
+  z-index: -10;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+
+.signin-section-info {
+  width: 45%;
+  background: rgba(48, 46, 46, 0.8);
+  padding: 30px 0;
+  border-right: 3px solid rgba(30, 30, 30, 0.8);
+}
+
+.signin-section-info h2 {
+  padding-top: 30px;
+  font-weight: 300;
+}
+
+.fa-users {
+  font-size: 3em;
+}
+
+.signup-form {
+  width: 70%;
+  padding: 30px 0;
+  transition: 0.2s;
+}
+
+.signup-form h2 {
+  font-weight: 300;
+}
+
+.input-fields {
+  margin: 15px 0;
+  font-size: 16px;
+  padding: 10px;
+  width: 250px;
+  border: 1px solid rgba(20, 20, 20, 0.6);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background: rgba(20, 20, 20, 0.2);
+  color: white;
+  outline: none;
+}
+
+.no-bullet {
+  list-style-type: none;
+  padding: 0;
+}
+
+.join-btn {
+  border: 1px solid rgba(20, 20, 20, 0.6);
+  background: rgba(20, 20, 20, 0.6);
+  font-size: 18px;
+  color: white;
+  margin-top: 20px;
+  padding: 10px 50px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.join-btn:hover {
+  background: rgba(20, 20, 20, 0.8);
+  padding: 10px 80px;
+}
+
+@media screen and (max-width: 850px) {
+  .signin-section {
+    top: 51%;
+    left: 50%;
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .signin-section {
+    top: 60%;
+  }
+  .input-fields{
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .input-fields{
+    width: 140px;
+  }
+}

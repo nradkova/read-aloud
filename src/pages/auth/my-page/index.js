@@ -9,7 +9,6 @@ import { getMySubscriptions, unsignSubscription } from '../../../services/subscr
 
 import Title from "../../../components/title";
 import Loader from '../../../components/loader';
-import PageLayout from "../../../components/page-layout";
 import Notification from '../../../components/notification';
 import BookCardLite from '../../../components/book-card-lite';
 import EventCardLite from '../../../components/lite-event-card';
@@ -22,15 +21,15 @@ let pagesEventCounter = 1;
 const MyPage = () => {
 	const { userId } = useParams();
 	const { user } = useContext(AuthContext);
-	const {notification, showNotification} = useContext(NotificationContext);
+	const { notification, showNotification } = useContext(NotificationContext);
 
-	const [update, setUpdate] = useState({reading:false,events:false});
+	const [update, setUpdate] = useState({ reading: false, events: false });
 	const [isLoading, setIsloading] = useState(false);
-	const [readingList, setReadingList] = useState({all:[],view:[]});
-	const [eventList, setEventList] = useState({all:[],view:[]});
-	const [totalPages, setTotalPages] = useState({reading:0,events:0});
-	const [readingListButtonsDisabled, setReadingListButtonsDisabled] = useState({increase:true,decrease:true});
-	const [eventListButtonsDisabled, setEventListButtonsDisabled] = useState({increase:true,decrease:true});
+	const [readingList, setReadingList] = useState({ all: [], view: [] });
+	const [eventList, setEventList] = useState({ all: [], view: [] });
+	const [totalPages, setTotalPages] = useState({ reading: 0, events: 0 });
+	const [readingListButtonsDisabled, setReadingListButtonsDisabled] = useState({ increase: true, decrease: true });
+	const [eventListButtonsDisabled, setEventListButtonsDisabled] = useState({ increase: true, decrease: true });
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -43,109 +42,106 @@ const MyPage = () => {
 			const readingPages = Math.ceil(fetchedReadingListData.length / 3);
 			const eventPages = Math.ceil(fetchedEventListData.length / 3);
 
-			setTotalPages({reading:readingPages,events:eventPages});
-			
+			setTotalPages({ reading: readingPages, events: eventPages });
+
 			if (readingPages > 1) {
-				setReadingListButtonsDisabled({increase:false,decrease:true});
-			}else{
-				setReadingListButtonsDisabled({increase:true,decrease:true});
+				setReadingListButtonsDisabled({ increase: false, decrease: true });
+			} else {
+				setReadingListButtonsDisabled({ increase: true, decrease: true });
 			}
-			pagesReadingCounter=1;
+			pagesReadingCounter = 1;
 
 			if (eventPages > 1) {
-				setEventListButtonsDisabled(prev=>({...prev,increase:false}));
-			}else{
-				setEventListButtonsDisabled({increase:true,decrease:true});
+				setEventListButtonsDisabled(prev => ({ ...prev, increase: false }));
+			} else {
+				setEventListButtonsDisabled({ increase: true, decrease: true });
 			}
-			pagesEventCounter=1;
-			
-			setReadingList(prev=>({all:fetchedReadingListData,view:fetchedReadingListData.slice(0, 3)}));
-			setEventList(prev=>({all:fetchedEventListData,view:fetchedEventListData.slice(0, 3)}));
+			pagesEventCounter = 1;
+
+			setReadingList(prev => ({ all: fetchedReadingListData, view: fetchedReadingListData.slice(0, 3) }));
+			setEventList(prev => ({ all: fetchedEventListData, view: fetchedEventListData.slice(0, 3) }));
 		}
 		fetchData()
-	}, [userId,update])
+	}, [userId, update])
 
 	const increaseReadingCounter = () => {
 		pagesReadingCounter++;
 		if (pagesReadingCounter >= totalPages.reading) {
-			setReadingListButtonsDisabled(prev=>({increase:true,decrease:false}));
-		}else{
-			setReadingListButtonsDisabled(prev=>({increase:false,decrease:false}));
+			setReadingListButtonsDisabled(prev => ({ increase: true, decrease: false }));
+		} else {
+			setReadingListButtonsDisabled(prev => ({ increase: false, decrease: false }));
 		}
-		setReadingList(prev=>({...prev,view:readingList.all.slice((pagesReadingCounter * 3) - 3, pagesReadingCounter * 3)}));
+		setReadingList(prev => ({ ...prev, view: readingList.all.slice((pagesReadingCounter * 3) - 3, pagesReadingCounter * 3) }));
 	}
 
 	const decreaseReadingCounter = () => {
 		pagesReadingCounter--;
 		if (pagesReadingCounter === 1) {
-			setReadingListButtonsDisabled(prev=>({increase:false,decrease:true}));
-		}else{
-			setReadingListButtonsDisabled(prev=>({increase:false,decrease:false}));
+			setReadingListButtonsDisabled(prev => ({ increase: false, decrease: true }));
+		} else {
+			setReadingListButtonsDisabled(prev => ({ increase: false, decrease: false }));
 		}
-		setReadingList(prev=>({...prev,view:readingList.all.slice((pagesReadingCounter * 3) - 3, pagesReadingCounter * 3)}));
+		setReadingList(prev => ({ ...prev, view: readingList.all.slice((pagesReadingCounter * 3) - 3, pagesReadingCounter * 3) }));
 	}
 
 	const increaseEventCounter = () => {
 		pagesEventCounter++;
 		if (pagesEventCounter >= totalPages.events) {
-			setEventListButtonsDisabled(prev=>({increase:true,decrease:false}));
-		}else{
-			setEventListButtonsDisabled(prev=>({increase:false,decrease:false}));
+			setEventListButtonsDisabled(prev => ({ increase: true, decrease: false }));
+		} else {
+			setEventListButtonsDisabled(prev => ({ increase: false, decrease: false }));
 		}
-		setEventList(prev=>({...prev,view:eventList.all.slice((pagesEventCounter * 3) - 3, pagesEventCounter * 3)}));
+		setEventList(prev => ({ ...prev, view: eventList.all.slice((pagesEventCounter * 3) - 3, pagesEventCounter * 3) }));
 	}
 
 	const decreaseEventCounter = () => {
 		pagesEventCounter--;
 		if (pagesEventCounter === 1) {
-			setEventListButtonsDisabled(prev=>({increase:false,decrease:true}));
-		}else{
-			setEventListButtonsDisabled(prev=>({increase:false,decrease:false}));
+			setEventListButtonsDisabled(prev => ({ increase: false, decrease: true }));
+		} else {
+			setEventListButtonsDisabled(prev => ({ increase: false, decrease: false }));
 		}
-		setEventList(prev=>({...prev,view:eventList.all.slice((pagesEventCounter * 3) - 3, pagesEventCounter * 3)}));
+		setEventList(prev => ({ ...prev, view: eventList.all.slice((pagesEventCounter * 3) - 3, pagesEventCounter * 3) }));
 	}
 
 	const onClickRemoveBook = async (e, id) => {
 		e.preventDefault();
-		showNotification("You are above to remove this book from your reading list!",id);
+		showNotification("You are above to remove this book from your reading list!", id);
 	}
 
-	const onClickRemoveEvent = async (e,subscriptionId) => {
+	const onClickRemoveEvent = async (e, subscriptionId) => {
 		e.preventDefault();
-		showNotification("You are above to remove this event from your event list!",subscriptionId);
+		showNotification("You are above to remove this event from your event list!", subscriptionId);
 	}
-	
-	
-	
-	useEffect(()=>{
-		if(notification.message.includes('book') && notification.result==="confirm"){
+
+
+
+	useEffect(() => {
+		if (notification.message.includes('book') && notification.result === "confirm") {
 			authServices.removeBookFromUserReadingList(userId, notification.objectId)
-			.then(res=>{
-				setUpdate(prev=>({reading:res,events:false}));
-			})
+				.then(res => {
+					setUpdate(prev => ({ reading: res, events: false }));
+				})
 		}
-		if(notification.message.includes('event') && notification.result==="confirm"){
+		if (notification.message.includes('event') && notification.result === "confirm") {
 			unsignSubscription(user.username, notification.objectId)
-			.then(res=>{
-				setUpdate(prev=>({reading:false,events:res}));
-			})
+				.then(res => {
+					setUpdate(prev => ({ reading: false, events: res }));
+				})
 		}
 
-	},[notification.result])
+	}, [notification.result])
 
-	
 
 	if (isLoading) {
 		return (
-			<PageLayout>
-				<Loader />
-			</PageLayout>
+			<Loader />
 		)
 	}
-	
+
 	return (
-		<PageLayout>
-			<Notification/>
+		<>
+			<Notification />
 			<Title title={user.username.toLocaleUpperCase() + ' \'s page'} />
 			<div className="my-page-container">
 
@@ -187,7 +183,7 @@ const MyPage = () => {
 					}
 				</div>
 			</div>
-		</PageLayout>
+		</>
 	)
 }
 

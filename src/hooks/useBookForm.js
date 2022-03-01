@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 
-import { DEFAULT_BOOK_CATEGORIES, DEFAULT_BOOK_URL, INITIAL_BOOK_VALIDATION_ERROR, INITIAL_BOOK_VALUE } from '../common';
+import { DEFAULT_BOOK_CATEGORIES, DEFAULT_BOOK_URL, INITIAL_BOOK_VALIDATION_ERROR, INITIAL_BOOK_VALUE } from '../constants/common';
 
 import uploadImage from '../services/image';
 import { bookDataValidation } from '../utils/validation';

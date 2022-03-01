@@ -1,0 +1,52 @@
+.event-card-lite {
+  display: flex;
+  width: 269px;
+  height: 164px;
+  border-radius: 6px;
+  box-shadow: 2px 2px 8px 2px grey;
+  margin: 20px;
+  background-color: white;
+  font-size: 0.9em;
+}
+
+.event-card-lite-img {
+  width: 120px;
+ padding: 10px;
+  border-right: 4px solid lightgrey;
+}
+.event-card-lite-img img {
+  width: 90px;
+  height: 80%;
+  object-fit: cover;
+  margin-top: 20px;
+}
+
+.event-card-lite-content {
+  font-size: 0.8em;
+  width: 180px;
+  padding-left: 15px;
+  text-align: left;
+  word-break: break-all;
+}
+
+.event-card-lite-content-heading {
+  color: grey;
+}
+
+.details-link{
+  float: right;
+  text-decoration: none;
+  color: steelblue;
+  margin-right: 15px;
+  margin-top: 5px;
+}
+
+.event-card-lite-content-text p:nth-child(even){
+  word-break: break-word;
+}
+
+.date-post{
+  font-size: 0.8em;
+  color: steelblue;
+  font-weight: bold;
+}

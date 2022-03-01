@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useReducer } from "react";
 
 import './index.css';
 
@@ -6,65 +6,82 @@ import { getLastFourBooks, getMostLikedBooks } from "../../services/book";
 import { getLastFourEvents, getMostRecentEvents } from "../../services/event";
 
 import Loader from "../../components/loader";
-import PageLayout from "../../components/page-layout";
 import BookCardMedium from "../../components/book-card-medium";
 import EventCardMedium from "../../components/medium-event-card";
+
+const initState = {
+  books: [],
+  events: [],
+  labelLatestBooks: 'selected',
+  labelLikedBooks: '',
+  labelUpcomingEvents: 'selected',
+  labelNewestEvents: '',
+  isLoading: false,
+}
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'books':
+      return { ...state, books: action.payload };
+    case 'events':
+      return { ...state, events: action.payload };
+    case 'latestBooks':
+      return { ...state, labelLatestBooks: 'selected', labelLikedBooks: '' };
+    case 'likedBooks':
+      return { ...state, labelLikedBooks: 'selected', labelLatestBooks: '' };
+    case 'upcomingEvents':
+      return { ...state, labelUpcomingEvents: 'selected', labelNewestEvents: '' };
+    case 'newestEvents':
+      return { ...state, labelUpcomingEvents: '', labelNewestEvents: 'selected' };
+    case 'loading':
+      return { ...state, isLoading: !state.isLoading };
+    default:
+      return state;
+  }
+}
 
 
 
 const Home = () => {
-  const [books, setBooks] = useState([])
-  const [events, setEvents] = useState([])
-  const [isLoading, setIsloading] = useState(false);
-  const [labelLatestBooks, setLabelLatestBooks] = useState('selected');
-  const [labelLikedBooks, setLabelLikedBooks] = useState('');
-  const [labelUpcomingEvents, setLabelUpcomingEvents] = useState('selected');
-  const [labelNewestEvents, setLabelNewestEvents] = useState('');
+  const [state, dispatch] = useReducer(reducer, initState);
 
   useEffect(() => {
-    setIsloading(true);
     latestBooksHandler();
-    setLabelLatestBooks('selected');
     newestEventHandler();
-    setLabelUpcomingEvents('selected');
-    setIsloading(false);
   }, [])
 
 
   const mostLikedBooksHandler = async () => {
-    setIsloading(true);
+    dispatch({ type: 'loading' });
     const res = await getMostLikedBooks();
-    setIsloading(false);
-    setBooks(res);
-    setLabelLikedBooks('selected');
-    setLabelLatestBooks('');
+    dispatch({ type: 'loading' });
+    dispatch({ type: 'books', payload: res });
+    dispatch({ type: 'likedBooks' });
+
   }
 
   const latestBooksHandler = async () => {
-    setIsloading(true);
+    dispatch({ type: 'loading' });
     const res = await getLastFourBooks();
-    setIsloading(false);
-    setBooks(res);
-    setLabelLatestBooks('selected');
-    setLabelLikedBooks('');
+    dispatch({ type: 'loading' });
+    dispatch({ type: 'books', payload: res });
+    dispatch({ type: 'latestBooks' });
   }
 
   const newestEventHandler = async () => {
-    setIsloading(true);
+    dispatch({ type: 'loading' });
     const res = await getLastFourEvents();
-    setIsloading(false);
-    setEvents(res);
-    setLabelNewestEvents('selected');
-    setLabelUpcomingEvents('');
+    dispatch({ type: 'loading' });
+    dispatch({ type: 'events', payload: res });
+    dispatch({ type: 'newestEvents' });
   }
 
   const upcomingEventsHandler = async () => {
-    setIsloading(true);
+    dispatch({ type: 'loading' });
     const res = await getMostRecentEvents();
-    setIsloading(false);
-    setEvents(res);
-    setLabelUpcomingEvents('selected');
-    setLabelNewestEvents('');
+    dispatch({ type: 'loading' });
+    dispatch({ type: 'events', payload: res });
+    dispatch({ type: 'upcomingEvents' });
   }
 
   const pageIntro = (
@@ -82,45 +99,45 @@ const Home = () => {
     </div>
   )
 
-  if (isLoading) {
+  if (state.isLoading) {
     return (
-      <PageLayout>
+      <>
         {pageIntro}
         <Loader />
-      </PageLayout>
+      </>
     )
   }
 
   return (
-    <PageLayout>
+    <>
       {pageIntro}
       <div className="inner-container-books-events">
         <section className="inner-container-books">
           <div className="books-container-items">
-            {books.map(x => <BookCardMedium key={x.id} id={x.id} imageUrl={x.imageUrl} title={x.title} author={x.author} rating={x.rating} />)}
+            {state.books.map(x => <BookCardMedium key={x.id} id={x.id} imageUrl={x.imageUrl} title={x.title} author={x.author} rating={x.rating} />)}
           </div>
-          {books.length > 0
+          {state.books.length > 0
             ? <div className="label-container">
-              <p className={`label ${labelLatestBooks}`} onClick={latestBooksHandler}>LATEST BOOKS</p>
-              <p className={`label ${labelLikedBooks}`} onClick={mostLikedBooksHandler}>MOST LIKED BOOKS</p>
+              <p className={`label ${state.labelLatestBooks}`} onClick={latestBooksHandler}>LATEST BOOKS</p>
+              <p className={`label ${state.labelLikedBooks}`} onClick={mostLikedBooksHandler}>MOST LIKED BOOKS</p>
             </div>
             : <h3>No books yet...</h3>
           }
         </section>
         <section className="inner-container-events">
           <div className="events-container-items">
-            {events.map(x => <EventCardMedium key={x.id} id={x.id} imageUrl={x.imageUrl} name={x.name} createdAt={x.createdAt} date={x.date} status={x.status} />)}
+            {state.events.map(x => <EventCardMedium key={x.id} id={x.id} imageUrl={x.imageUrl} name={x.name} createdAt={x.createdAt} date={x.date} status={x.status} />)}
           </div>
-          {events.length > 0
+          {state.events.length > 0
             ? <div className="label-container">
-              <p className={`label ${labelNewestEvents}`} onClick={newestEventHandler} >NEWEST EVENTS</p>
-              <p className={`label ${labelUpcomingEvents}`} onClick={upcomingEventsHandler}>UPCOMING EVENTS</p>
+              <p className={`label ${state.labelNewestEvents}`} onClick={newestEventHandler} >NEWEST EVENTS</p>
+              <p className={`label ${state.labelUpcomingEvents}`} onClick={upcomingEventsHandler}>UPCOMING EVENTS</p>
             </div>
             : <h3>No events yet...</h3>
           }
         </section>
       </div>
-    </PageLayout>
+    </>
   )
 }
 

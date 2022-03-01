@@ -8,7 +8,6 @@ import AuthContext from "../../../context/authContext";
 
 import Loader from "../../../components/loader";
 import Category from "../../../components/category";
-import PageLayout from "../../../components/page-layout";
 import ValidationError from "../../../components/validation-error";
 
 
@@ -52,14 +51,14 @@ const BookEdit = () => {
 	
 	if (isLoading) {
 		return (
-			<PageLayout>
+			<>
 				<Loader />
-			</PageLayout>
+			</>
 		)
 	}
 
 	return (
-		<PageLayout>
+		<>
 			<div className="book-form-container">
 				<div className="book-form-title">
 					<h3><i className="fa fa-arrow-right"></i>Edit book</h3>
@@ -106,7 +105,7 @@ const BookEdit = () => {
 					</div>
 				</form>
 			</div>
-		</PageLayout>
+		</>
 	)
 }
 

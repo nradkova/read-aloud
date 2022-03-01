@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 
-import { DEFAULT_EVENT_URL, INITIAL_EVENT_VALUE, INITIAL_EVENT_VALIDATION_ERROR, DEFAULT_LAG_LTD } from '../common';
+import { DEFAULT_EVENT_URL, INITIAL_EVENT_VALUE, INITIAL_EVENT_VALIDATION_ERROR, DEFAULT_LAG_LTD } from '../constants/common';
 
 import uploadImage from '../services/image';
 import { eventDataValidation } from '../utils/validation';

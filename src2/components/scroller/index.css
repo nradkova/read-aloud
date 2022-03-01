@@ -1,0 +1,25 @@
+.scroller-button {
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    border-radius: 50%;
+    border: none; 
+    background-color: rgb(162, 186, 187);
+    padding: 8px;
+    width: 40px;
+    display: none;
+}
+
+.scroller-button:hover {
+    background-color: rgb(96, 116, 153);
+}
+
+.fa-arrow-up{
+    font-weight: bolder;
+    font-size: 1.5em;
+    color: whitesmoke;
+}
+
+.scroller-button.selected{
+    display: block;
+}

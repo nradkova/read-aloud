@@ -1,38 +1,27 @@
-import { useCallback, useRef } from 'react';
+import { useState} from 'react';
 
 import './index.css';
 
-
 const onClickHandler = (e) => {
   window.scrollTo({top: 0, behavior: "smooth"});
-}
-
-const scrollToTop = () => {
-  if (window.scrollY > 0) {
-    window.scrollTo({top: 0, behavior: "smooth"});
-  }
-}
+};
 
 const Scroller = () => {
-  const scroller = useRef()
+  const [visible, setVisible] = useState(false);
   
-  useCallback(()=>{
-    scrollToTop();
-
-  },[])
-  
-  const setVisible = () => {
-    if (window.innerHeight + 300 >= window.outerHeight) {
-      if (scroller.current) {
-        scroller.current.style.display = "block";
+  const showScroller = () => {
+      const scrolled = window.scrollY;
+      if (scrolled > 150) {
+          setVisible(true);
+      } else if (scrolled <= 150) {
+          setVisible(false);
       }
-    }
-  }
+  };
 
-  window.addEventListener('scroll', setVisible);
+    window.addEventListener('scroll', showScroller);
   
   return (
-    <button ref={scroller} className={`scroller-button`} onClick={onClickHandler}><i className="fas fa-arrow-up"></i></button>
+    <button className="scroller-button" style={{display:visible?'block':'none'}} onClick={onClickHandler}><i className="fas fa-arrow-up"></i></button>
   )
 }
 

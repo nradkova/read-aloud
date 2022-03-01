@@ -1,0 +1,57 @@
+.landing-page-wrapper{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(245, 239, 230);
+  color: rgb(245, 239, 230);
+}
+
+.line-first {
+  width: 20ch;
+  animation: typing 2s steps(20), blink 0.5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: monospace;
+  font-size: 2em;
+  color: black;
+  margin-bottom: 3%;
+}
+
+
+.line-second {
+    font-family: monospace;
+    font-size: 2em;
+    animation: color-change 8s infinite alternate;
+    animation-delay: 2s;
+}
+
+.line-third {
+    font-family: monospace;
+    font-size: 2em;
+    animation: color-change 8s infinite alternate;
+    animation-delay: 4s;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+}
+
+@keyframes color-change {
+    100% {
+        color: black;
+    }
+}
+
+a{
+    text-align: center;
+}
+
+.fa-book-reader{
+    cursor: pointer;
+    color: rgb(162, 186, 187);
+}
+

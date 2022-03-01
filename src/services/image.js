@@ -1,4 +1,4 @@
-import { storageKeys } from "../keys";
+import { storageKeys } from "../constants/keys";
 
 const uploadImage = async (data) => {
     const apiUrl = storageKeys.API_URL;

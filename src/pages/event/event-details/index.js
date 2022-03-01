@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import './index.css';
-import { DEFAULT_EVENT_URL } from "../../../common";
+import { DEFAULT_EVENT_URL } from "../../../constants/common";
 
 import useEvent from "../../../hooks/useEvent";
 import AuthContext from "../../../context/authContext";
@@ -10,7 +10,6 @@ import AuthContext from "../../../context/authContext";
 import Loader from "../../../components/loader";
 import MapEvent from "../../../components/map-event";
 import CustomComment from "../../../components/comment";
-import PageLayout from "../../../components/page-layout";
 
 const EventDetails = () => {
 	const { isAuthenticated, user } = useContext(AuthContext);
@@ -49,14 +48,14 @@ const EventDetails = () => {
 
 	if (isLoading) {
 		return (
-			<PageLayout>
+			<>
 				<Loader />
-			</PageLayout>
+			</>
 		)
 	}
 
 	return (
-		<PageLayout>
+		<>
 			<h1>Event</h1>
 			<div className="event-details-container">
 				<div className="event-main">
@@ -112,7 +111,7 @@ const EventDetails = () => {
 					{actionsAllowed()}
 				</div>
 			</div>
-		</PageLayout>
+		</>
 	)
 }
 
